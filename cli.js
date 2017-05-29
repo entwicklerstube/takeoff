@@ -1,35 +1,43 @@
 #!/usr/bin/env node
-const inquirer = require('inquirer')
+const inquirer = require('inquirer');
 
-const { getPredefinedStations, getCustomStations } = require('./lib/station')
+const {getPredefinedStations, getCustomStations, loadStationByName} = require('./lib/station');
+
+console.log(
+  require('./stations/node-module/__station__')
+);
 
 const TakeOff = async () => {
-  const predefinedStations = await getPredefinedStations()
-  const customStations = await getCustomStations()
-  const seperator = []
+	const predefinedStations = await getPredefinedStations();
+	const customStations = await getCustomStations();
+	const seperator = [];
 
-  if (customStations.length > 0) {
-    seperator.push(new inquirer.Separator(`Found custom stations in "${process.cwd().split('/').pop()}"`))
-  }
+	if (customStations.length > 0) {
+		seperator.push(new inquirer.Separator(`Found custom stations in "${process.cwd().split('/').pop()}"`));
+	}
 
-  const takeOffSteps = [{
-    type: 'list',
-    name: 'station',
-    message: 'Choose your station',
-    choices: []
+	const chooseBetweenAvailableStations = [{
+		type: 'list',
+		name: 'stationName',
+		message: 'Choose your station',
+		choices: []
       .concat(predefinedStations)
       .concat(seperator)
       .concat(customStations)
-  }]
+	}];
 
-  const answers = await inquirer.prompt(takeOffSteps)
+	const {stationName} = await inquirer.prompt(chooseBetweenAvailableStations);
 
-  console.log('-------', answers);
-}
+	const station = await loadStationByName(stationName);
 
-TakeOff()
+	console.log('ok the station is', station);
 
-//   const b = files.filter(file => !/(.DS_Store|_shared)/.test(file))
+  // Const answerCustomStationQuestions = []
+};
+
+TakeOff();
+
+//   Const b = files.filter(file => !/(.DS_Store|_shared)/.test(file))
 //
 //   var questions = [{
 //     type: 'list',
@@ -48,9 +56,6 @@ TakeOff()
 //     console.log(JSON.stringify(answers));
 //     });
 // })
-
-
-
 
 // const tasks = new Listr([{
 //   title: 'Git',
