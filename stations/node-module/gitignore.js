@@ -1,4 +1,4 @@
-export default t => t`
+module.exports = () => `
 # Logs
 logs
 *.log
@@ -57,4 +57,4 @@ typings/
 
 # dotenv environment variables file
 .env
-`
+`;
