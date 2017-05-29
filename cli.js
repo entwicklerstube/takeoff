@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 const inquirer = require('inquirer');
 const updateNotifier = require('update-notifier');
+const PrettyError = require('pretty-error');
 const pkg = require('./package.json');
+
+const {render} = new PrettyError();
 
 updateNotifier({pkg}).notify();
 
@@ -29,12 +32,29 @@ const {getPredefinedStations, getCustomStations, loadStationByName} = require('.
 
     const {stationName} = await inquirer.prompt(chooseBetweenAvailableStations);
 
-    const station = await loadStationByName(stationName);
+    const station = await loadStationByName(stationName, 'stations');
 
     console.log('ok the station is', station);
-    // Const answerCustomStationQuestions = []
+
+    const answerCustomStationQuestions = [];
+
+    station.requiredProps.forEach(prop => {
+      answerCustomStationQuestions.push({
+        type: 'input',
+        name: prop,
+        message: `Fill: ${prop}`
+      });
+    });
+
+    const stationProps = await inquirer.prompt(answerCustomStationQuestions);
+
+    console.log(
+      station.run(stationProps)
+    );
   } catch (err) {
-    console.log('🚫', err.toString().replace(/^Error:/, ''));
+    // Console.log('🚫', err.toString().replace(/^Error:/, ''));
+    const renderedError = render(err);
+    console.log(renderedError);
   }
 })();
 
