@@ -6,7 +6,7 @@ Scaffold structures - pre-defined or custom
 
 ### Install
 ```
-npm install takeoff -g
+npm install takeoff-cli -g
 ```
 
 ### Usage
@@ -36,4 +36,3 @@ $ takeoff --help
 
 ### Credits
 - [Rocket-Icon](https://thenounproject.com/search/?q=rocket&i=865894) by [Aneeque Ahmed](https://thenounproject.com/aneeque/)
-- [Pratham Agrawal](https://github.com/pagrawl3) for giving me the access to the npm-package `takeoff`
