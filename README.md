@@ -1,5 +1,6 @@
-# takeoff
-> Simple scaffolding projects or/and custom files
+![Takeoff](repo-banner.png)
+
+Scaffold structures - pre-defined or custom
 
 ### Install
 ```
