@@ -1,17 +1,25 @@
 #!/usr/bin/env node
 const inquirer = require('inquirer')
 
-const { getOfficialStations } = require('./lib/station')
+const { getPredefinedStations, getCustomStations } = require('./lib/station')
 
 const TakeOff = async () => {
-  const officialStations = await getOfficialStations()
+  const predefinedStations = await getPredefinedStations()
+  const customStations = await getCustomStations()
+  const seperator = []
+
+  if (customStations.length > 0) {
+    seperator.push(new inquirer.Separator(`Found custom stations in "${process.cwd().split('/').pop()}"`))
+  }
 
   const takeOffSteps = [{
     type: 'list',
     name: 'station',
     message: 'Choose your station',
     choices: []
-      .concat(officialStations)
+      .concat(predefinedStations)
+      .concat(seperator)
+      .concat(customStations)
   }]
 
   const answers = await inquirer.prompt(takeOffSteps)
@@ -20,6 +28,27 @@ const TakeOff = async () => {
 }
 
 TakeOff()
+
+//   const b = files.filter(file => !/(.DS_Store|_shared)/.test(file))
+//
+//   var questions = [{
+//     type: 'list',
+//     name: 'station',
+//     message: 'Choose your station',
+//     choices: []
+//     .concat(b)
+//     // if .takeoff folder found in project
+//     .concat([new inquirer.Separator(`Found custom stations in "${process.cwd().split('/').pop()}"`)])
+//     .concat(['A', 'B']),
+//     filter: val => val.toLowerCase()
+//   }]
+//
+//   inquirer.prompt(questions).then(function (answers) {
+//     console.log('\nOrder receipt:');
+//     console.log(JSON.stringify(answers));
+//     });
+// })
+
 
 
 

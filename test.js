@@ -1,38 +1,69 @@
 const mock = require('mock-fs');
 const expect = require('chai').expect
 
-const { getOfficialStations } = require('./lib/station')
+const { getPredefinedStations, getCustomStations } = require('./lib/station')
 
 describe('lib/station', () => {
-  beforeEach(() => {
-    mock({
-      'stations/node-module': {},
-      'stations/component': {}
-    });
+  describe('getPredefinedStations', () => {
+    beforeEach(() => {
+      mock({
+        'stations/node-module': {},
+        'stations/component': {}
+      });
+    })
+
+    afterEach(() => {
+      mock.restore()
+    })
+
+    it('returns array with available stations', async () => {
+      const officialStations = await getPredefinedStations()
+      expect(officialStations).to.be.a('array')
+    })
+
+    it('returns mocked station', async () => {
+      const officialStations = await getPredefinedStations()
+      expect(officialStations).to.deep.equal(['component', 'node-module'])
+    })
+
+    it('returns empty array if no mocked stations are available', async () => {
+      mock.restore()
+
+      mock({
+        'stations': {}
+      });
+
+      const officialStations = await getPredefinedStations()
+      expect(officialStations).to.deep.equal([])
+    })
   })
 
-  afterEach(() => {
-    mock.restore()
-  })
+  describe('getCustomStations', () => {
+    beforeEach(() => {
+      mock({
+        '.takeoff/custom-station': {}
+      });
+    })
 
-  it('returns array with available stations', async () => {
-    const officialStations = await getOfficialStations()
-    expect(officialStations).to.be.a('array')
-  })
+    afterEach(() => {
+      mock.restore()
+    })
 
-  it('returns mocked station', async () => {
-    const officialStations = await getOfficialStations()
-    expect(officialStations).to.deep.equal(['component', 'node-module'])
-  })
+    it('returns array', async () => {
+      const customStations = await getCustomStations()
+      expect(customStations).to.be.a('array')
+    })
 
-  it('returns empty array if no mocked stations are available', async () => {
-    mock.restore()
+    it('returns array with custom stations (in a .takeoff folder)', async () => {
+      const customStations = await getCustomStations()
+      expect(customStations).to.deep.equal(['custom-station'])
+    })
 
-    mock({
-      'stations': {}
-    });
+    it('returns empty array if .takeoff folder doesnt exist ', async () => {
+      mock.restore()
 
-    const officialStations = await getOfficialStations()
-    expect(officialStations).to.deep.equal([])
+      const customStations = await getCustomStations()
+      expect(customStations).to.deep.equal([])
+    })
   })
 })
