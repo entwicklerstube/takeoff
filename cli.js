@@ -1,40 +1,41 @@
 #!/usr/bin/env node
 const inquirer = require('inquirer');
+const updateNotifier = require('update-notifier');
+const pkg = require('./package.json');
 
-// Enable when published to npm
-// const updateNotifier = require('update-notifier');
-// const pkg = require('./package.json');
-//
-// updateNotifier({pkg}).notify();
+updateNotifier({pkg}).notify();
 
 const {getPredefinedStations, getCustomStations, loadStationByName} = require('./lib/station');
 
 (async () => {
-  const predefinedStations = await getPredefinedStations();
-  const customStations = await getCustomStations();
-  const seperator = [];
+  try {
+    const predefinedStations = await getPredefinedStations();
+    const customStations = await getCustomStations();
+    const seperator = [];
 
-  if (customStations.length > 0) {
-    seperator.push(new inquirer.Separator(`Found custom stations in "${process.cwd().split('/').pop()}"`));
+    if (customStations.length > 0) {
+      seperator.push(new inquirer.Separator(`Found custom stations in "${process.cwd().split('/').pop()}"`));
+    }
+
+    const chooseBetweenAvailableStations = [{
+      type: 'list',
+      name: 'stationName',
+      message: 'What do you want to create?',
+      choices: []
+        .concat(predefinedStations)
+        .concat(seperator)
+        .concat(customStations)
+    }];
+
+    const {stationName} = await inquirer.prompt(chooseBetweenAvailableStations);
+
+    const station = await loadStationByName(stationName);
+
+    console.log('ok the station is', station);
+    // Const answerCustomStationQuestions = []
+  } catch (err) {
+    console.log('🚫', err.toString().replace(/^Error:/, ''));
   }
-
-  const chooseBetweenAvailableStations = [{
-    type: 'list',
-    name: 'stationName',
-    message: 'What do you want to create?',
-    choices: []
-      .concat(predefinedStations)
-      .concat(seperator)
-      .concat(customStations)
-  }];
-
-  const {stationName} = await inquirer.prompt(chooseBetweenAvailableStations);
-
-  const station = await loadStationByName(stationName);
-
-  console.log('ok the station is', station);
-
-  // Const answerCustomStationQuestions = []
 })();
 
 //   Const b = files.filter(file => !/(.DS_Store|_shared)/.test(file))
