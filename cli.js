@@ -52,33 +52,11 @@ const {getPredefinedStations, getCustomStations, loadStationByName} = require('.
       station.run(stationProps)
     );
   } catch (err) {
-    // Console.log('🚫', err.toString().replace(/^Error:/, ''));
-    const renderedError = render(err);
-    console.log(renderedError);
+    render(err);
   }
 })();
 
-//   Const b = files.filter(file => !/(.DS_Store|_shared)/.test(file))
-//
-//   var questions = [{
-//     type: 'list',
-//     name: 'station',
-//     message: 'Choose your station',
-//     choices: []
-//     .concat(b)
-//     // if .takeoff folder found in project
-//     .concat([new inquirer.Separator(`Found custom stations in "${process.cwd().split('/').pop()}"`)])
-//     .concat(['A', 'B']),
-//     filter: val => val.toLowerCase()
-//   }]
-//
-//   inquirer.prompt(questions).then(function (answers) {
-//     console.log('\nOrder receipt:');
-//     console.log(JSON.stringify(answers));
-//     });
-// })
-
-// const tasks = new Listr([{
+// A const tasks = new Listr([{
 //   title: 'Git',
 // 	task: () => new Promise((resolve) => {
 //     setTimeout(() => resolve(), 1000)
