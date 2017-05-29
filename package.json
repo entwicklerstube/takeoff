@@ -1,0 +1,23 @@
+{
+  "name": "takeoff",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:entwicklerstube/takeoff.git",
+  "author": "michaelzoidl <github@michaelzoidl.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ava": "^0.19.1",
+    "chai": "^4.0.0",
+    "inquirer": "^3.0.6",
+    "listr": "^0.12.0",
+    "mocha": "^3.4.2",
+    "mock-fs": "^4.3.0"
+  },
+  "bin": {
+    "takeoff": "cli.js"
+  },
+  "scripts": {
+    "test": "ava test/*.js",
+    "_test": "mocha test.js && ava"
+  }
+}

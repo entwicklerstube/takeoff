@@ -1,3 +1,4 @@
+export default t => t`
 # Logs
 logs
 *.log
@@ -56,5 +57,4 @@ typings/
 
 # dotenv environment variables file
 .env
-
-/.DS_Store
+`
