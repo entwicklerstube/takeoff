@@ -75,7 +75,7 @@ describe('lib/station', () => {
         '.takeoff/custom-station': {}
       });
 
-      const mockRequireCustomStationPath = path.resolve(__dirname, '.takeoff', 'custom-station', '__station__.js');
+      const mockRequireCustomStationPath = path.resolve(__dirname, '.takeoff', 'custom-station', '__station.js');
       mockRequire(mockRequireCustomStationPath, {mocked: 'station'});
     });
 
