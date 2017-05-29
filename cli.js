@@ -1,41 +1,41 @@
 #!/usr/bin/env node
 const inquirer = require('inquirer');
 
+// Enable when published to npm
+// const updateNotifier = require('update-notifier');
+// const pkg = require('./package.json');
+//
+// updateNotifier({pkg}).notify();
+
 const {getPredefinedStations, getCustomStations, loadStationByName} = require('./lib/station');
 
-console.log(
-  require('./stations/node-module/__station__')
-);
+(async () => {
+  const predefinedStations = await getPredefinedStations();
+  const customStations = await getCustomStations();
+  const seperator = [];
 
-const TakeOff = async () => {
-	const predefinedStations = await getPredefinedStations();
-	const customStations = await getCustomStations();
-	const seperator = [];
+  if (customStations.length > 0) {
+    seperator.push(new inquirer.Separator(`Found custom stations in "${process.cwd().split('/').pop()}"`));
+  }
 
-	if (customStations.length > 0) {
-		seperator.push(new inquirer.Separator(`Found custom stations in "${process.cwd().split('/').pop()}"`));
-	}
-
-	const chooseBetweenAvailableStations = [{
-		type: 'list',
-		name: 'stationName',
-		message: 'Choose your station',
-		choices: []
+  const chooseBetweenAvailableStations = [{
+    type: 'list',
+    name: 'stationName',
+    message: 'What do you want to create?',
+    choices: []
       .concat(predefinedStations)
       .concat(seperator)
       .concat(customStations)
-	}];
+  }];
 
-	const {stationName} = await inquirer.prompt(chooseBetweenAvailableStations);
+  const {stationName} = await inquirer.prompt(chooseBetweenAvailableStations);
 
-	const station = await loadStationByName(stationName);
+  const station = await loadStationByName(stationName);
 
-	console.log('ok the station is', station);
+  console.log('ok the station is', station);
 
   // Const answerCustomStationQuestions = []
-};
-
-TakeOff();
+})();
 
 //   Const b = files.filter(file => !/(.DS_Store|_shared)/.test(file))
 //
