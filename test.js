@@ -1,7 +1,7 @@
 const mock = require('mock-fs');
 const expect = require('chai').expect
 
-const { getPredefinedStations, getCustomStations } = require('./lib/station')
+const { getPredefinedStations, getCustomStations, loadStationByName } = require('./lib/station')
 
 describe('lib/station', () => {
   describe('getPredefinedStations', () => {
@@ -66,4 +66,29 @@ describe('lib/station', () => {
       expect(customStations).to.deep.equal([])
     })
   })
+
+  describe('loadStationByName', () => {
+    it('returns a object', async () => {
+      const station = await loadStationByName()
+      expect(station).to.be.a('object')
+    })
+
+    it('returns a object', async () => {
+      const station = await loadStationByName()
+      expect(station).to.be.a('object')
+    })
+  })
 })
+
+
+
+
+
+
+
+
+
+
+
+
+//
