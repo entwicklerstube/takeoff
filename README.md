@@ -43,6 +43,7 @@ _Todo__
 ```js
 module.exports = {
   requiredProps: ['content'],
+  targetRoute: '',
   run: props => ({
     files: [{
       filename: 'my-file.txt',
@@ -52,6 +53,8 @@ module.exports = {
 ```
 You see, there is a array with `requiredProps`, this information uses the interface to get the specific props.
 When the user has given us all prop-informations and everything passed, the `run()` function executes, here we expect a returned object within a `files` array, each item (a object) holds the information about the filename and the content of the file.
+
+#
 
 ### Credits
 - [Rocket-Icon](https://thenounproject.com/search/?q=rocket&i=865894) by [Aneeque Ahmed](https://thenounproject.com/aneeque/)
