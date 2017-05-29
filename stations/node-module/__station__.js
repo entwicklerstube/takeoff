@@ -1,5 +1,5 @@
-import packageJson from './package.json.js'
+// import packageJson from './package.json.js'
 
-export default {
+module.exports = {
   requiredProps: ['name', 'email']
 }
