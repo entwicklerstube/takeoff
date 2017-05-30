@@ -1,19 +1,20 @@
 #!/usr/bin/env node
 const inquirer = require('inquirer');
 const updateNotifier = require('update-notifier');
-const PrettyError = require('pretty-error');
+const {green} = require('chalk');
+const taskler = require('taskler');
 const pkg = require('./package.json');
-
-const {render} = new PrettyError();
 
 updateNotifier({pkg}).notify();
 
 const {getPredefinedStations, getCustomStations, loadStationByName} = require('./lib/station');
+const {createFilesByList} = require('./lib/wizard');
 
 (async () => {
   try {
     const predefinedStations = await getPredefinedStations();
     const customStations = await getCustomStations();
+    const stationsCollection = [].concat(predefinedStations).concat(customStations);
     const seperator = [];
 
     if (customStations.length > 0) {
@@ -22,7 +23,7 @@ const {getPredefinedStations, getCustomStations, loadStationByName} = require('.
 
     const chooseBetweenAvailableStations = [{
       type: 'list',
-      name: 'stationName',
+      name: 'stationId',
       message: 'What do you want to create?',
       choices: []
         .concat(predefinedStations)
@@ -30,44 +31,58 @@ const {getPredefinedStations, getCustomStations, loadStationByName} = require('.
         .concat(customStations)
     }];
 
-    const {stationName} = await inquirer.prompt(chooseBetweenAvailableStations);
+    const {stationId} = await inquirer.prompt(chooseBetweenAvailableStations);
+    const {name, type} = stationsCollection.find(({value}) => value === stationId);
 
-    const station = await loadStationByName(stationName, 'stations');
+    const station = await loadStationByName({name, type});
 
-    console.log('ok the station is', station);
-
-    const answerCustomStationQuestions = [];
+    const requiredStationProps = [];
 
     station.requiredProps.forEach(prop => {
-      answerCustomStationQuestions.push({
-        type: 'input',
-        name: prop,
-        message: `Fill: ${prop}`
-      });
+      if (typeof prop === 'string') {
+        requiredStationProps.push({
+          type: 'input',
+          name: prop,
+          message: prop
+        });
+      } else {
+        requiredStationProps.push(prop);
+      }
     });
 
-    const stationProps = await inquirer.prompt(answerCustomStationQuestions);
+    const stationProps = await inquirer.prompt(requiredStationProps);
 
-    console.log(
-      station.run(stationProps)
-    );
+    const {files} = station.run(stationProps);
+
+    console.log('🚀  Houston, lift of in 3..2..1');
+
+    const tasks = [];
+
+    if (station.preTakeoff !== undefined) {
+      tasks.push({
+        title: 'Pre Takeoff',
+        task: opts => station.preTakeoff(stationProps, opts)
+      });
+    }
+
+    tasks.push({
+      title: `Create files for station ${name}`,
+      task: ({emit, succeed}) => {
+        createFilesByList(files, emit).then(succeed);
+      }
+    });
+
+    if (station.postTakeoff !== undefined) {
+      tasks.push({
+        title: 'Post Takeoff',
+        task: opts => station.postTakeoff(stationProps, opts)
+      });
+    }
+
+    taskler(tasks, () => {
+      console.info(green('🎉  Done'));
+    });
   } catch (err) {
-    render(err);
+    console.error(err);
   }
 })();
-
-// A const tasks = new Listr([{
-//   title: 'Git',
-// 	task: () => new Promise((resolve) => {
-//     setTimeout(() => resolve(), 1000)
-//   })
-// },{
-//   title: 'bar',
-// 	task: () => new Promise((resolve) => {
-//     setTimeout(() => resolve(), 2000)
-//   })
-// }]);
-//
-// tasks.run().catch(err => {
-// 	console.error(err);
-// });
