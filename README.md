@@ -28,8 +28,9 @@ $ takeoff
 _Todo_
 
 ### Predefined Stations
-**`node-module`**
-```
+<p><details>
+<summary><code>node-module</code></summary>
+
 **requiredProps**
 - package-name
 - license
@@ -40,7 +41,7 @@ _Todo_
 - preformated `README`
 - selected `LICENSE`
 - empty `yarn.lock`
-```
+</details></p>
 
 ### Create a custom station for your own project
 1. Create a `.takeoff` folder in your project root
@@ -66,8 +67,6 @@ Pass valid [`inquirer objects`](https://github.com/SBoudrias/Inquirer.js#objects
 
 **Run script after creating files**
 Add a `postTakeoff` function to your `__station.js` configuration, after successfully creating the files this will be executed
-
-#
 
 ## Credits
 - [Rocket-Icon](https://thenounproject.com/search/?q=rocket&i=865894) by [Aneeque Ahmed](https://thenounproject.com/aneeque/)
