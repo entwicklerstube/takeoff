@@ -28,7 +28,8 @@ $ takeoff
 _Todo_
 
 ### Predefined Stations
-#### `node-module`
+**`node-module`**
+```
 **requiredProps**
 - package-name
 - license
@@ -39,6 +40,7 @@ _Todo_
 - preformated `README`
 - selected `LICENSE`
 - empty `yarn.lock`
+```
 
 ### Create a custom station for your own project
 1. Create a `.takeoff` folder in your project root
@@ -67,5 +69,9 @@ Add a `postTakeoff` function to your `__station.js` configuration, after success
 
 #
 
-### Credits
+## Credits
 - [Rocket-Icon](https://thenounproject.com/search/?q=rocket&i=865894) by [Aneeque Ahmed](https://thenounproject.com/aneeque/)
+
+## Author
+
+Michael J. Zoidl ([@michaelzoidl](https://twitter.com/michaelzoidl)) - [entwicklerstube](https://entwicklerstube.com)
