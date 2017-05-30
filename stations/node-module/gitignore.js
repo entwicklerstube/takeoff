@@ -1,4 +1,6 @@
-module.exports = () => `
+const t = require('outdent');
+
+module.exports = () => t`
 # Logs
 logs
 *.log
