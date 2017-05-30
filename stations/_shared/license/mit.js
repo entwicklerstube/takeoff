@@ -3,7 +3,7 @@ const t = require('outdent');
 module.exports = props => t`
 MIT License
 
-Copyright (c) 2017 ${props.user}
+Copyright (c) 2017 ${props.username}
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
