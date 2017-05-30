@@ -2,7 +2,7 @@
 
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
-Scaffold structures - pre-defined or custom
+Scaffold structures - predefined or custom
 
 ### Install
 ```
@@ -11,48 +11,57 @@ npm install takeoff-cli -g
 
 ### Usage
 ```
-$ takeoff --help
+$ takeoff
 
   Usage
-    $ takeoff <command>
+    $ takeoff
 
-    Command can be:
-      stations: node-module | react-app
-      global:   init | help
-
-    init
-      You can create a .takeoff folder in your project and takeoff will use your custom scaffoldings
-
-  Each station requires different parameters, the interactive
-
-  Global Options
-    --no-git    The takeoff will not contain a git-setup
+  Interactive Command-Line-Interface starts
 
   Examples
-    $ takeoff node-module --without
+    $ takeoff
 ```
 
 ### Interactive UI
-_Todo__
+_Todo_
 
-### Create a custom station
+### Predefined Stations
+#### `node-module`
+**requiredProps**
+- package-name
+- license
+
+**What you get**
+- `package.json`
+- full `.gitignore`
+- preformated `README`
+- selected `LICENSE`
+- empty `yarn.lock`
+
+### Create a custom station for your own project
 1. Create a `.takeoff` folder in your project root
 2. Add a new directory named after your wanted `station` e.g. `node-modules`
-3. Create a `__station.js`
-4. Use the format:
+3. Create a `__station.js` in the new directory
+4. Fill:
 ```js
 module.exports = {
-  requiredProps: ['content'],
-  targetRoute: '',
-  run: props => ({
-    files: [{
-      filename: 'my-file.txt',
-      template: 'This is the content my file has: ' + props.content
-    }})
+  requiredProps: ['content'], // required props, will be required in interactive CLI
+  run: props => ({  // run function will be fired with - before - defined props
+    files: [{ // return a files array, takeoff will use this information to create the files
+      filename: 'my-file.txt',  // choose here the filename, if you want to create a file in a deeper folder just add the path `my/folder/my-file.txt`
+      template: `My Content: ${props.content}`  // template is simply the content of the file
+    }]
+  })
 };
 ```
-You see, there is a array with `requiredProps`, this information uses the interface to get the specific props.
-When the user has given us all prop-informations and everything passed, the `run()` function executes, here we expect a returned object within a `files` array, each item (a object) holds the information about the filename and the content of the file.
+Checkout the example stations in [`example`](https://github.com/entwicklerstube/takeoff/tree/master/example)
+
+#### Advanced
+**More specific interactive cli questions**
+Pass valid [`inquirer objects`](https://github.com/SBoudrias/Inquirer.js#objects) in `requiredProps` for more specific questions.
+
+**Run script after creating files**
+Add a `postTakeoff` function to your `__station.js` configuration, after successfully creating the files this will be executed
 
 #
 
