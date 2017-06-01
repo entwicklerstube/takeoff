@@ -1,6 +1,9 @@
 const t = require('outdent');
 
 module.exports = () => t`
+# macOS
+.DS_Store
+
 # Logs
 logs
 *.log
