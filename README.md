@@ -32,17 +32,19 @@ _Todo_
 #### Predefined Stations
 <p><details>
 <summary><code>node-module</code></summary>
-
-**requiredProps**
-- package-name
-- license
-
-**What you get**
+**Setup**
+- `README.md`
 - `package.json`
-- full `.gitignore`
-- preformated `README`
-- selected `LICENSE`
-- empty `yarn.lock`
+- `index.js`
+- `license` (choose between mit, gnu or apache)
+- `babel` _optional_
+- `git-init` _optional_
+- `create project folder` _optional_
+- `mocha` _optional_
+- `ava` _optional_
+- `xo` _optional_
+- `standard` _optional_
+- `travis.yml` _optional_
 </details></p>
 
 #### Build your own custom station
@@ -75,7 +77,7 @@ Add a `postTakeoff` function to your `__station.js` configuration, after success
 </details></p>
 
 ## Credits
-- Take a look in the [`yarn.lock`]() and see how many open source modules this projects requires.. <3 
+- Take a look in the [`yarn.lock`]() and see how many open source modules this projects requires.. <3
 - [Rocket-Icon](https://thenounproject.com/search/?q=rocket&i=865894) by [Aneeque Ahmed](https://thenounproject.com/aneeque/)
 
 ## Author
