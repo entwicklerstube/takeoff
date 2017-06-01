@@ -13,7 +13,7 @@ npm install takeoff-cli -g
 
 ### Usage
 ```
-$ takeoff
+$ takeoff <station>
 
   Usage
     $ takeoff
@@ -27,7 +27,9 @@ $ takeoff
 ### Interactive UI
 _Todo_
 
-### Predefined Stations
+
+### Stations
+#### Predefined Stations
 <p><details>
 <summary><code>node-module</code></summary>
 
@@ -43,7 +45,9 @@ _Todo_
 - empty `yarn.lock`
 </details></p>
 
-### Create a custom station for your own project
+#### Build your own custom station
+<p><details>
+<summary><code>node-module</code></summary>
 1. Create a `.takeoff` folder in your project root
 2. Add a new directory named after your wanted `station` e.g. `node-modules`
 3. Create a `__station.js` in the new directory
@@ -59,6 +63,7 @@ module.exports = {
   })
 };
 ```
+
 Checkout the example stations in [`example`](https://github.com/entwicklerstube/takeoff/tree/master/example)
 
 #### Advanced
@@ -67,8 +72,10 @@ Pass valid [`inquirer objects`](https://github.com/SBoudrias/Inquirer.js#objects
 
 **Run script after creating files**
 Add a `postTakeoff` function to your `__station.js` configuration, after successfully creating the files this will be executed
+</details></p>
 
 ## Credits
+- Take a look in the [`yarn.lock`]() and see how many open source modules this projects requires.. <3 
 - [Rocket-Icon](https://thenounproject.com/search/?q=rocket&i=865894) by [Aneeque Ahmed](https://thenounproject.com/aneeque/)
 
 ## Author
