@@ -3,12 +3,29 @@ const inquirer = require('inquirer');
 const updateNotifier = require('update-notifier');
 const {green} = require('chalk');
 const taskler = require('taskler');
+const meow = require('meow');
 const pkg = require('./package.json');
 
 updateNotifier({pkg}).notify();
 
+const cli = meow(`
+  Usage
+    $ takeoff <station>
+
+  Example
+    $ takeoff node-module
+`);
+
 const {getPredefinedStations, getCustomStations, loadStationByName} = require('./lib/station');
 const {createFilesByList} = require('./lib/wizard');
+
+const getStationId = stations => new Promise(resolve => {
+  if (cli.input.length === 0) {
+    inquirer.prompt(stations).then(({stationId}) => resolve(stationId));
+  } else {
+    resolve(stations[0].choices.find(({name}) => name === cli.input[0]).value);
+  }
+});
 
 (async () => {
   try {
@@ -31,7 +48,8 @@ const {createFilesByList} = require('./lib/wizard');
         .concat(customStations)
     }];
 
-    const {stationId} = await inquirer.prompt(chooseBetweenAvailableStations);
+    const stationId = await getStationId(chooseBetweenAvailableStations);
+
     const {name, type} = stationsCollection.find(({value}) => value === stationId);
 
     const station = await loadStationByName({name, type});
