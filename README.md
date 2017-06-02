@@ -1,4 +1,4 @@
-![Takeoff](repo-banner.png)
+![Takeoff](https://mjz.io/CsgV4.png)
 
 [![Build Status](https://travis-ci.org/entwicklerstube/takeoff.svg?branch=master)](https://travis-ci.org/entwicklerstube/takeoff)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
@@ -25,7 +25,8 @@ $ takeoff <station>
 ```
 
 ### Interactive UI
-_Todo_
+![Takeoff Node-Module](https://mjz.io/EtRW9.gif)
+_Example of the `node-module` station_
 
 
 ### Stations
