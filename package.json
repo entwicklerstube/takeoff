@@ -14,6 +14,7 @@
     "get-stream": "^3.0.0",
     "inquirer": "^3.0.6",
     "listr": "^0.12.0",
+    "meow": "^3.7.0",
     "mocha": "^3.4.2",
     "mock-fs": "^4.3.0",
     "mock-require": "^2.0.2",
