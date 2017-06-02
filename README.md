@@ -33,7 +33,7 @@ _Todo_
 <p><details>
 <summary><code>node-module</code></summary>
 
-**Setup**
+**Contains**
 - `README.md`
 - `package.json`
 - `index.js`
@@ -51,7 +51,8 @@ _Todo_
 
 #### Build your own custom station
 <p><details>
-<summary><code>node-module</code></summary>
+<summary><h4>node-module</h4></summary>
+
 1. Create a `.takeoff` folder in your project root
 2. Add a new directory named after your wanted `station` e.g. `node-modules`
 3. Create a `__station.js` in the new directory
@@ -76,6 +77,7 @@ Pass valid [`inquirer objects`](https://github.com/SBoudrias/Inquirer.js#objects
 
 **Run script after creating files**
 Add a `postTakeoff` function to your `__station.js` configuration, after successfully creating the files this will be executed
+
 </details></p>
 
 ## Credits
