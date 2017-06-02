@@ -13,15 +13,15 @@ npm install takeoff-cli -g
 
 ### Usage
 ```
-$ takeoff <station>
-
   Usage
-    $ takeoff
+    $ takeoff <station>
 
-  Interactive Command-Line-Interface starts
+  If no station is given a interactive cli prompt will ask you which station you want.
 
   Examples
     $ takeoff
+    - or
+    $ takeoff node-module
 ```
 
 ### Interactive UI
@@ -39,13 +39,45 @@ _Example of the `node-module` station_
 - `index.js`
 - `license` (choose between mit, gnu or apache)
 - `babel` _optional_
-- `git-init` _optional_
+- `.git` _optional_
 - `create project folder` _optional_
 - `mocha` _optional_
 - `ava` _optional_
 - `xo` _optional_
 - `standard` _optional_
 - `travis.yml` _optional_
+
+</details></p>
+
+<p><details>
+<summary><code>react-starter-kit</code></summary>
+It uses the latest version of the awesome [`react-starter-kit`](https://github.com/kriasoft/react-starter-kit) project.
+
+Tree after process:
+```cl
+- .editorconfig
+- .eslintrc.js
+- .flowconfig
+- .git
+- .gitattributes
+- .gitignore
+- .nycrc
+- .stylelintrc.js
+- .travis.yml
+- CHANGELOG.md
+- CONTRIBUTING.md
+- Dockerfile
+- LICENSE.txt
+- README.md
+- docs
+- node_modules
+- package.json
+- public
+- src
+- test
+- tools
+- yarn.lock
+```
 
 </details></p>
 
