@@ -2,7 +2,7 @@ module.exports = {
   requiredProps: ['content'],
   run: props => ({
     files: [{
-      filename: 'my-file.txt',
+      filename: '.takeoff/my-file.txt',
       template: `My Content: ${props.content}`
     }]
   })
