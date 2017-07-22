@@ -14,6 +14,7 @@ npm install takeoff-cli -g
 ### Usage
 ```
   Usage
+    $ takeoff init
     $ takeoff <station>
 
   If no station is given a interactive cli prompt will ask you which station you want.
@@ -27,59 +28,6 @@ npm install takeoff-cli -g
 ### Interactive UI
 ![Takeoff Node-Module](https://mjz.io/EtRW9.gif)
 _Example of the `node-module` station_
-
-
-### Stations
-<p><details>
-<summary><code>node-module</code></summary>
-
-**Contains**
-- `README.md`
-- `package.json`
-- `index.js`
-- `license` (choose between mit, gnu or apache)
-- `babel` _optional_
-- `.git` _optional_
-- `create project folder` _optional_
-- `mocha` _optional_
-- `ava` _optional_
-- `xo` _optional_
-- `standard` _optional_
-- `travis.yml` _optional_
-
-</details></p>
-
-<p><details>
-<summary><code>react-starter-kit</code></summary>
-It uses the latest version of the awesome [`react-starter-kit`](https://github.com/kriasoft/react-starter-kit) project.
-
-Tree after process:
-```cl
-- .editorconfig
-- .eslintrc.js
-- .flowconfig
-- .git
-- .gitattributes
-- .gitignore
-- .nycrc
-- .stylelintrc.js
-- .travis.yml
-- CHANGELOG.md
-- CONTRIBUTING.md
-- Dockerfile
-- LICENSE.txt
-- README.md
-- docs
-- node_modules
-- package.json
-- public
-- src
-- test
-- tools
-- yarn.lock
-```
-
-</details></p>
 
 [Create your own station!](https://github.com/entwicklerstube/takeoff/wiki/Create-a-station)
 
