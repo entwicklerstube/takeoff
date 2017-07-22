@@ -29,6 +29,9 @@ const getStationId = stations => new Promise(resolve => {
 
 (async () => {
   try {
+    // const projectStations = await loadProjectStations();
+    
+
     const predefinedStations = await getPredefinedStations();
     const customStations = await getCustomStations();
     const stationsCollection = [].concat(predefinedStations).concat(customStations);
@@ -43,6 +46,7 @@ const getStationId = stations => new Promise(resolve => {
       name: 'stationId',
       message: 'What do you want to create?',
       choices: []
+        // .concat(projectStations)
         .concat(predefinedStations)
         .concat(seperator)
         .concat(customStations)
