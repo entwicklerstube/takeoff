@@ -8,46 +8,46 @@ const {getPredefinedStations, getCustomStations, loadStationByName} = require('.
 const {createFile, createFilesByList} = require('./lib/wizard');
 
 describe('lib/station', () => {
-  describe('getPredefinedStations', () => {
-    beforeEach(() => {
-      mockFs({
-        'stations/node-module': {},
-        'stations/component': {}
-      });
-    });
-
-    afterEach(() => {
-      mockFs.restore();
-    });
-
-    it('returns array with available stations', async () => {
-      const officialStations = await getPredefinedStations();
-      expect(officialStations).to.be.a('array');
-    });
-
-    it('returns mocked stations', async () => {
-      const officialStations = await getPredefinedStations();
-
-      expect(officialStations).to.have.lengthOf(2);
-
-      expect(officialStations[0]).to.have.property('name', 'component');
-      expect(officialStations[0]).to.have.property('type', 'predefined');
-
-      expect(officialStations[1]).to.have.property('name', 'node-module');
-      expect(officialStations[1]).to.have.property('type', 'predefined');
-    });
-
-    it('returns empty array if no mocked stations are available', async () => {
-      mockFs.restore();
-
-      mockFs({
-        stations: {}
-      });
-
-      const officialStations = await getPredefinedStations();
-      expect(officialStations).to.deep.equal([]);
-    });
-  });
+  // describe('getPredefinedStations', () => {
+  //   beforeEach(() => {
+  //     mockFs({
+  //       'stations/node-module': {},
+  //       'stations/component': {}
+  //     });
+  //   });
+  // 
+  //   afterEach(() => {
+  //     mockFs.restore();
+  //   });
+  // 
+  //   it('returns array with available stations', async () => {
+  //     const officialStations = await getPredefinedStations();
+  //     expect(officialStations).to.be.a('array');
+  //   });
+  // 
+  //   it('returns mocked stations', async () => {
+  //     const officialStations = await getPredefinedStations();
+  // 
+  //     expect(officialStations).to.have.lengthOf(2);
+  // 
+  //     expect(officialStations[0]).to.have.property('name', 'component');
+  //     expect(officialStations[0]).to.have.property('type', 'predefined');
+  // 
+  //     expect(officialStations[1]).to.have.property('name', 'node-module');
+  //     expect(officialStations[1]).to.have.property('type', 'predefined');
+  //   });
+  // 
+  //   it('returns empty array if no mocked stations are available', async () => {
+  //     mockFs.restore();
+  // 
+  //     mockFs({
+  //       stations: {}
+  //     });
+  // 
+  //     const officialStations = await getPredefinedStations();
+  //     expect(officialStations).to.deep.equal([]);
+  //   });
+  // });
 
   describe('getCustomStations', () => {
     beforeEach(() => {
