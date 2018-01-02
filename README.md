@@ -24,11 +24,6 @@ npm install takeoff-cli -g
     $ takeoff node-module
 ```
 
-### Interactive UI
-![Takeoff Node-Module](https://mjz.io/EtRW9.gif)
-_Example of the `node-module` station_
-
-
 ### Stations
 <p><details>
 <summary><code>node-module</code></summary>
