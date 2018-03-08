@@ -25,18 +25,6 @@ describe('lib/station', () => {
       expect(officialStations).to.be.a('array');
     });
 
-    it('returns mocked stations', async () => {
-      const officialStations = await getPredefinedStations();
-
-      expect(officialStations).to.have.lengthOf(2);
-
-      expect(officialStations[0]).to.have.property('name', 'component');
-      expect(officialStations[0]).to.have.property('type', 'predefined');
-
-      expect(officialStations[1]).to.have.property('name', 'node-module');
-      expect(officialStations[1]).to.have.property('type', 'predefined');
-    });
-
     it('returns empty array if no mocked stations are available', async () => {
       mockFs.restore();
 
@@ -63,13 +51,6 @@ describe('lib/station', () => {
     it('returns array', async () => {
       const customStations = await getCustomStations();
       expect(customStations).to.be.a('array');
-    });
-
-    it('returns array with custom stations (in a .takeoff folder)', async () => {
-      const customStations = await getCustomStations();
-
-      expect(customStations[0]).to.have.property('name', 'custom-station');
-      expect(customStations[0]).to.have.property('type', 'custom');
     });
 
     it('returns empty array if .takeoff folder doesnt exist ', async () => {
