@@ -16,47 +16,53 @@ const cli = meow(`
     $ takeoff node-module
 `);
 
-const {getPredefinedStations, getCustomStations, loadStationByName} = require('./lib/station');
-const {createFilesByList} = require('./lib/wizard');
+const { getStations, loadStationByName } = require('./lib/station');
+const { createFilesByList } = require('./lib/wizard');
 
-const getStationId = stations => new Promise(resolve => {
+const getStationId = async stations => {
+
   if (cli.input.length === 0) {
-    inquirer.prompt(stations).then(({stationId}) => resolve(stationId));
+
+    return ( await inquirer.prompt(stations)).stationId;
   } else {
-    resolve(stations[0].choices.find(({name}) => name === cli.input[0]).value);
+
+    return stations[0].choices.find(({name}) => name === cli.input[0]).value;
   }
-});
+};
 
 (async () => {
   try {
-    const predefinedStations = await getPredefinedStations();
-    const customStations = await getCustomStations();
-    const stationsCollection = [].concat(predefinedStations).concat(customStations);
-    const seperator = [];
+    const stationsCollection = await getStations();
 
-    if (customStations.length > 0) {
-      seperator.push(new inquirer.Separator(`Found custom stations in "${process.cwd().split('/').pop()}"`));
+    const stationsPathMap = stationsCollection.reduce( (m, s) => ({ ...m, [s.stationsPath]: s}), {});
+
+    let stationChoices = [];
+
+    for( let stationsPath in stationsPathMap ) {
+
+      stationChoices.push(new inquirer.Separator(`Stations from "${stationsPath}"`));
+
+      stationChoices = stationChoices.concat(stationsPathMap[stationsPath]);
     }
 
     const chooseBetweenAvailableStations = [{
       type: 'list',
       name: 'stationId',
       message: 'What do you want to create?',
-      choices: []
-        .concat(predefinedStations)
-        .concat(seperator)
-        .concat(customStations)
+      choices: stationChoices
     }];
 
     const stationId = await getStationId(chooseBetweenAvailableStations);
 
-    const {name, type} = stationsCollection.find(({value}) => value === stationId);
+    console.log(stationsCollection, stationId);
 
-    const station = await loadStationByName({name, type});
+    const {name, stationsPath} = stationsCollection.find(({value}) => value === stationId);
+
+    const station = await loadStationByName({name, stationsPath});
 
     const requiredStationProps = [];
 
-    station.requiredProps.forEach(prop => {
+    station.requiredProps && station.requiredProps.forEach(prop => {
       if (typeof prop === 'string') {
         requiredStationProps.push({
           type: 'input',

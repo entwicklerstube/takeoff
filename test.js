@@ -4,78 +4,48 @@ const mockRequire = require('mock-require');
 const expect = require('chai').expect;
 const {readFile} = require('fs-extra');
 
-const {getPredefinedStations, getCustomStations, loadStationByName} = require('./lib/station');
+const {getStations, loadStationByName} = require('./lib/station');
 const {createFile, createFilesByList} = require('./lib/wizard');
 
 describe('lib/station', () => {
-  describe('getPredefinedStations', () => {
-    beforeEach(() => {
-      mockFs({
-        'stations/node-module': {},
-        'stations/component': {}
-      });
-    });
 
-    afterEach(() => {
-      mockFs.restore();
-    });
-
-    it('returns array with available stations', async () => {
-      const officialStations = await getPredefinedStations();
-      expect(officialStations).to.be.a('array');
-    });
-
-    it('returns empty array if no mocked stations are available', async () => {
-      mockFs.restore();
-
-      mockFs({
-        stations: {}
-      });
-
-      const officialStations = await getPredefinedStations();
-      expect(officialStations).to.deep.equal([]);
-    });
-  });
-
-  describe('getCustomStations', () => {
-    beforeEach(() => {
-      mockFs({
-        '.takeoff/custom-station': {}
-      });
-    });
+  describe('getStations', () => {
 
     afterEach(() => {
       mockFs.restore();
     });
 
     it('returns array', async () => {
-      const customStations = await getCustomStations();
-      expect(customStations).to.be.a('array');
+
+      mockFs({
+        '.takeoff/custom-station': {}
+      });
+
+      const stations = await getStations();
+      expect(stations).to.be.a('array');
     });
 
     it('returns empty array if .takeoff folder doesnt exist ', async () => {
-      mockFs.restore();
+      mockFs({});
 
-      const customStations = await getCustomStations();
-      expect(customStations).to.deep.equal([]);
+      const stations = await getStations();
+      expect(stations).to.deep.equal([]);
     });
   });
 
   describe('loadStationByName', () => {
+
+    const stationsPath = path.resolve(process.cwd(), '.takeoff');
+    const sampleStation = path.resolve(stationsPath, 'custom-station', '__station.js');
+    const mockRequireStationPath = path.resolve(__dirname, '.takeoff', 'custom-station', '__station.js');
+
     beforeEach(() => {
-      const predfinedPath = path.resolve(__dirname, 'stations');
-      const stationsPath = path.resolve(process.cwd(), '.takeoff');
 
       mockFs({
-        [path.resolve(stationsPath, 'custom-station', '__station.js')]: {},
-        [path.resolve(predfinedPath, 'predefined-station', '__station.js')]: {}
+        [sampleStation]: {},
       });
 
-      const mockRequireCustomStationPath = path.resolve(__dirname, '.takeoff', 'custom-station', '__station.js');
-      mockRequire(mockRequireCustomStationPath, {mockedType: 'custom-station'});
-
-      const mockRequirePredefinedPath = path.resolve(predfinedPath, 'predefined-station', '__station.js');
-      mockRequire(mockRequirePredefinedPath, {mockedType: 'predefined-station'});
+      mockRequire(mockRequireStationPath, {mockedType: 'custom-station'});
     });
 
     afterEach(() => {
@@ -83,19 +53,13 @@ describe('lib/station', () => {
     });
 
     it('returns a object', async () => {
-      const station = await loadStationByName({name: 'custom-station', type: 'custom'});
+      const station = await loadStationByName({name: 'custom-station', stationsPath});
 
       expect(station).to.be.a('object');
     });
 
-    it('returns station information from predefined station', async () => {
-      const station = await loadStationByName({name: 'predefined-station', type: 'predefined'});
-
-      expect(station.mockedType).to.equal('predefined-station');
-    });
-
-    it('returns station information from custom station', async () => {
-      const station = await loadStationByName({name: 'custom-station', type: 'custom'});
+    it('returns station information from station', async () => {
+      const station = await loadStationByName({name: 'custom-station', stationsPath});
 
       expect(station.mockedType).to.equal('custom-station');
     });
