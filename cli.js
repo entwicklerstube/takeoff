@@ -88,7 +88,7 @@ const getStationId = async stations => {
     }
 
     tasks.push({
-      title: `Create files for station ${name}`,
+      title: `Created files for station ${name}`,
       task: ({emit, succeed}) => {
         createFilesByList(files, emit).then(succeed);
       }
