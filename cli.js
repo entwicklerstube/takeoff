@@ -54,8 +54,6 @@ const getStationId = async stations => {
 
     const stationId = await getStationId(chooseBetweenAvailableStations);
 
-    console.log(stationsCollection, stationId);
-
     const {name, stationsPath} = stationsCollection.find(({value}) => value === stationId);
 
     const station = await loadStationByName({name, stationsPath});
@@ -105,8 +103,10 @@ const getStationId = async stations => {
 
     taskler(tasks, () => {
       console.info(green('🎉  Done'));
+      process.exit(0);
     });
   } catch (err) {
     console.error(err);
+    process.exit(1);
   }
 })();
