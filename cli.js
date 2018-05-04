@@ -34,8 +34,17 @@ const getStationId = async stations => {
   try {
     const stationsCollection = await getStations();
 
-    const stationsPathMap = stationsCollection.reduce( (m, s) => ({ ...m, [s.stationsPath]: s}), {});
+    const stationsPathMap = stationsCollection.reduce( (m, station) => { 
 
+      const pathStations = m[station.stationsPath] || [];
+      pathStations.push(station);
+
+      return {
+        ...m, 
+        [station.stationsPath]: pathStations
+      };
+    }, {} );
+    
     let stationChoices = [];
 
     for( let stationsPath in stationsPathMap ) {
