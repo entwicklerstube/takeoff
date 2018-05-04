@@ -1,6 +1,6 @@
 {
   "name": "takeoff-cli",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "main": "index.js",
   "repository": "git@github.com:entwicklerstube/takeoff.git",
   "author": "michaelzoidl <github@michaelzoidl.com>",
