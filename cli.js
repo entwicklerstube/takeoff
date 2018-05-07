@@ -103,7 +103,6 @@ const getStationId = async stations => {
 
     taskler(tasks, () => {
       console.info(green('🎉  Done'));
-      process.exit(0);
     });
   } catch (err) {
     console.error(err);
