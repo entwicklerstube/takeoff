@@ -63,8 +63,6 @@ const getStationId = async stations => {
 
     const stationId = await getStationId(chooseBetweenAvailableStations);
 
-    console.log(stationsCollection, stationId);
-
     const {name, stationsPath} = stationsCollection.find(({value}) => value === stationId);
 
     const station = await loadStationByName({name, stationsPath});
@@ -99,7 +97,7 @@ const getStationId = async stations => {
     }
 
     tasks.push({
-      title: `Create files for station ${name}`,
+      title: `Created files for station ${name}`,
       task: ({emit, succeed}) => {
         createFilesByList(files, emit).then(succeed);
       }
@@ -117,5 +115,6 @@ const getStationId = async stations => {
     });
   } catch (err) {
     console.error(err);
+    process.exit(1);
   }
 })();
