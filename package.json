@@ -38,6 +38,6 @@
   "scripts": {
     "test": "mocha test.js",
     "lint": "xo *.js **/*.js",
-    "prepublish": "np --no-publish"
+    "prepublishOnly": "np --no-publish"
   }
 }
