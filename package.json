@@ -1,6 +1,6 @@
 {
   "name": "takeoff-cli",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "main": "index.js",
   "repository": "git@github.com:entwicklerstube/takeoff.git",
   "author": "michaelzoidl <github@michaelzoidl.com>",
@@ -23,6 +23,7 @@
     "mocha": "^3.4.2",
     "mock-fs": "^4.3.0",
     "mock-require": "^2.0.2",
+    "np": "^2.20.1",
     "xo": "^0.18.2"
   },
   "bin": {
@@ -36,6 +37,7 @@
   },
   "scripts": {
     "test": "mocha test.js",
-    "lint": "xo *.js **/*.js"
+    "lint": "xo *.js **/*.js",
+    "prepublishOnly": "np --no-publish"
   }
 }
