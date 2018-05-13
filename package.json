@@ -14,7 +14,6 @@
     "meow": "^3.7.0",
     "p-map": "^1.1.1",
     "shortid": "^2.2.8",
-    "taskler": "^1.1.2",
     "update-notifier": "^2.1.0"
   },
   "devDependencies": {
