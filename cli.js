@@ -1,18 +1,9 @@
 #!/usr/bin/env node
 const inquirer = require('inquirer');
 const updateNotifier = require('update-notifier');
-const meow = require('meow');
 const pkg = require('./package.json');
 
 updateNotifier({ pkg }).notify();
-
-const cli = meow(`
-  Usage
-    $ takeoff <station>
-
-  Example
-    $ takeoff node-module
-`);
 
 const { getStations, loadStationByName } = require('./lib/station');
 const { createFilesByList } = require('./lib/wizard');

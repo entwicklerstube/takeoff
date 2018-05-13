@@ -11,7 +11,6 @@
   "dependencies": {
     "fs-extra": "^3.0.1",
     "inquirer": "^3.0.6",
-    "meow": "^3.7.0",
     "p-map": "^1.1.1",
     "shortid": "^2.2.8",
     "update-notifier": "^2.1.0"
