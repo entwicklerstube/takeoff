@@ -22,7 +22,7 @@ If you add takeoff then as an npm script, keep in mind that `npm run` changes th
   Usage
     $ takeoff
 
-  A interactive cli prompt will ask you which of the found stations you will create.
+  A interactive cli prompt will ask you which of the found stations you want to create.
 
   Examples
     $ takeoff
