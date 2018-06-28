@@ -25,6 +25,9 @@
   "bin": {
     "takeoff": "cli.js"
   },
+  "engines" : {
+    "node" : ">=7.6"
+  },
   "scripts": {
     "test": "mocha test.js",
     "prepublishOnly": "np --no-publish"
