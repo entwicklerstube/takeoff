@@ -1,3 +1,6 @@
+<br />
+<br />
+<br />
 <p align="center">
   <img src="https://mjz.io/eqsyu.svg" />
   <br />
@@ -13,15 +16,17 @@
       alt="Build Status">
   </a>
 </p>
+<br />
+<br />
 
 ### Global Install
 ```
-npm install takeoff-cli -g
+$ npm install takeoff-cli -g
 ```
 
 ### Project Local Install
 ```
-npm install takeoff-cli
+$ npm install takeoff-cli
 ```
 
 If you add takeoff then as an npm script, keep in mind that `npm run` changes the execution directory to the root of the project before execution. So you won't take advantage of multiple `.takeoff` folders inside your project then.
