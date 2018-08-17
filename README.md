@@ -86,3 +86,5 @@ Pass valid [`inquirer objects`](https://github.com/SBoudrias/Inquirer.js#objects
 ## Author
 - Michael Zoidl - [entwicklerstube](https://entwicklerstube.com)
 - Jan Schmidle - [cospired](https://cospired.com)
+
+_Thanks [Nikita Tcherednikov](https://thenounproject.com/nikita.tcherednikov/) for the rocket._
