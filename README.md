@@ -1,9 +1,18 @@
-# Takeoff
-> Scaffold structures
-
-[![Build Status](https://travis-ci.org/entwicklerstube/takeoff.svg?branch=master)](https://travis-ci.org/entwicklerstube/takeoff)
-[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
-![Node Version 7](https://img.shields.io/badge/node-v7-green.svg)
+<p align="center">
+  <img src="https://mjz.io/eqsyu.svg" />
+  <br />
+  <br />
+  <code>
+    <strong>$ takeoff</strong>
+  </code>
+  <br />
+  <br />
+  <a href="https://travis-ci.org/entwicklerstube/takeoff">
+    <img
+      src="https://travis-ci.org/entwicklerstube/takeoff.svg?branch=master"
+      alt="Build Status">
+  </a>
+</p>
 
 ### Global Install
 ```
