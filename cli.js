@@ -1,9 +1,5 @@
 #!/usr/bin/env node
 const inquirer = require('inquirer');
-const updateNotifier = require('update-notifier');
-const pkg = require('./package.json');
-
-updateNotifier({ pkg }).notify();
 
 const { getStations, loadStationByName } = require('./lib/station');
 const { createFilesByList } = require('./lib/wizard');
@@ -21,10 +17,9 @@ const getStationId = async stations => {
       const pathStations = m[station.stationsPath] || [];
       pathStations.push(station);
 
-      return {
-        ...m,
+      return Object.assign({}, m, {
         [station.stationsPath]: pathStations
-      };
+      });
     }, {} );
 
     let stationChoices = [];
@@ -37,7 +32,7 @@ const getStationId = async stations => {
     }
 
     if (stationChoices.length === 0) {
-      console.log('No takeoff stations found.');
+      console.log('No takeoff stations found.'); // eslint-disable-line no-console
       process.exit(1);
     }
 
@@ -74,10 +69,10 @@ const getStationId = async stations => {
 
     await createFilesByList(files);
 
-    console.log('Done');
+    console.log('Done'); // eslint-disable-line no-console
 
   } catch (err) {
-    console.error(err);
+    console.error(err); // eslint-disable-line no-console
     process.exit(1);
   }
 })();
