@@ -5,18 +5,18 @@
   "repository": "git@github.com:entwicklerstube/takeoff.git",
   "author": "michaelzoidl <github@michaelzoidl.com>",
   "contributors": [
+    "Michael Zoidl <michael@entwicklerstube.com> (https://entwicklerstube.com/)",
     "Jan Schmidle <jan@cospired.com> (https://cospired.com/)"
   ],
   "license": "MIT",
   "dependencies": {
     "fs-extra": "^3.0.1",
     "inquirer": "^3.0.6",
-    "p-map": "^1.1.1",
-    "shortid": "^2.2.8",
-    "update-notifier": "^2.1.0"
+    "p-map": "^1.1.1"
   },
   "devDependencies": {
     "chai": "^4.0.0",
+    "eslint": "^5.3.0",
     "mocha": "^3.4.2",
     "mock-fs": "^4.3.0",
     "mock-require": "^2.0.2",
@@ -25,11 +25,12 @@
   "bin": {
     "takeoff": "cli.js"
   },
-  "engines" : {
-    "node" : ">=7.6"
+  "engines": {
+    "node": ">=7.6"
   },
   "scripts": {
     "test": "mocha test.js",
-    "prepublishOnly": "np --no-publish"
+    "prepublishOnly": "np --no-publish",
+    "lint": "eslint ./**/*.js"
   }
 }
