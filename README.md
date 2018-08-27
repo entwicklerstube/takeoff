@@ -1,18 +1,32 @@
-# Takeoff
-> Scaffold structures
-
-[![Build Status](https://travis-ci.org/entwicklerstube/takeoff.svg?branch=master)](https://travis-ci.org/entwicklerstube/takeoff)
-[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
-![Node Version 7](https://img.shields.io/badge/node-v7-green.svg)
+<br />
+<br />
+<br />
+<p align="center">
+  <img src="https://mjz.io/eqsyu.svg" />
+  <br />
+  <br />
+  <code>
+    <strong>$ takeoff</strong>
+  </code>
+  <br />
+  <br />
+  <a href="https://travis-ci.org/entwicklerstube/takeoff">
+    <img
+      src="https://travis-ci.org/entwicklerstube/takeoff.svg?branch=master"
+      alt="Build Status">
+  </a>
+</p>
+<br />
+<br />
 
 ### Global Install
 ```
-npm install takeoff-cli -g
+$ npm install takeoff-cli -g
 ```
 
 ### Project Local Install
 ```
-npm install takeoff-cli
+$ npm install takeoff-cli
 ```
 
 If you add takeoff then as an npm script, keep in mind that `npm run` changes the execution directory to the root of the project before execution. So you won't take advantage of multiple `.takeoff` folders inside your project then.
@@ -20,14 +34,12 @@ If you add takeoff then as an npm script, keep in mind that `npm run` changes th
 ### Usage
 ```
   Usage
-    $ takeoff <station>
+    $ takeoff
 
-  If no station is given a interactive cli prompt will ask you which station you want.
+  A interactive cli prompt will ask you which of the found stations you want to create.
 
   Examples
     $ takeoff
-    - or
-    $ takeoff node-module
 ```
 
 ## Create a station
@@ -65,20 +77,14 @@ Invoking takeoff in `/Users/myuser/Documents/Projects/myCustomer/customerProject
   globalStation
 ```
 
-
 Checkout the example stations in [`example`](https://github.com/entwicklerstube/takeoff/tree/master/example)
 
 #### Advanced
 **More specific interactive cli questions**
 Pass valid [`inquirer objects`](https://github.com/SBoudrias/Inquirer.js#objects) in `requiredProps` for more specific questions.
 
-**Run script after creating files**
-Add a `postTakeoff` function to your `__station.js` configuration, after successfully creating the files this will be executed
-
-
-## Credits
-- Take a look in the [`yarn.lock`](https://github.com/entwicklerstube/takeoff/blob/master/yarn.lock) and see how many open source modules this projects requires.. :heart:
-
 ## Author
-Michael J. Zoidl ([@michaelzoidl](https://twitter.com/michaelzoidl)) - [entwicklerstube](https://entwicklerstube.com)
-Jan Schmidle - [cospired](https://cospired.com)
+- Michael Zoidl - [entwicklerstube](https://entwicklerstube.com)
+- Jan Schmidle - [cospired](https://cospired.com)
+
+_Thanks [Nikita Tcherednikov](https://thenounproject.com/nikita.tcherednikov/) for the rocket._

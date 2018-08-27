@@ -1,50 +1,27 @@
 #!/usr/bin/env node
 const inquirer = require('inquirer');
-const updateNotifier = require('update-notifier');
-const {green} = require('chalk');
-const taskler = require('taskler');
-const meow = require('meow');
-const pkg = require('./package.json');
-
-updateNotifier({pkg}).notify();
-
-const cli = meow(`
-  Usage
-    $ takeoff <station>
-
-  Example
-    $ takeoff node-module
-`);
 
 const { getStations, loadStationByName } = require('./lib/station');
 const { createFilesByList } = require('./lib/wizard');
 
 const getStationId = async stations => {
-
-  if (cli.input.length === 0) {
-
-    return ( await inquirer.prompt(stations)).stationId;
-  } else {
-
-    return stations[0].choices.find(({name}) => name === cli.input[0]).value;
-  }
+  return ( await inquirer.prompt(stations)).stationId;
 };
 
 (async () => {
   try {
     const stationsCollection = await getStations();
 
-    const stationsPathMap = stationsCollection.reduce( (m, station) => { 
+    const stationsPathMap = stationsCollection.reduce( (m, station) => {
 
       const pathStations = m[station.stationsPath] || [];
       pathStations.push(station);
 
-      return {
-        ...m, 
+      return Object.assign({}, m, {
         [station.stationsPath]: pathStations
-      };
+      });
     }, {} );
-    
+
     let stationChoices = [];
 
     for( let stationsPath in stationsPathMap ) {
@@ -52,6 +29,11 @@ const getStationId = async stations => {
       stationChoices.push(new inquirer.Separator(`Stations from "${stationsPath}"`));
 
       stationChoices = stationChoices.concat(stationsPathMap[stationsPath]);
+    }
+
+    if (stationChoices.length === 0) {
+      console.log('No takeoff stations found.'); // eslint-disable-line no-console
+      process.exit(1);
     }
 
     const chooseBetweenAvailableStations = [{
@@ -63,9 +45,9 @@ const getStationId = async stations => {
 
     const stationId = await getStationId(chooseBetweenAvailableStations);
 
-    const {name, stationsPath} = stationsCollection.find(({value}) => value === stationId);
+    const { name, stationsPath } = stationsCollection.find(({ value }) => value === stationId);
 
-    const station = await loadStationByName({name, stationsPath});
+    const station = await loadStationByName({ name, stationsPath });
 
     const requiredStationProps = [];
 
@@ -83,38 +65,14 @@ const getStationId = async stations => {
 
     const stationProps = await inquirer.prompt(requiredStationProps);
 
-    const {files} = station.run(stationProps);
+    const { files } = station.run(stationProps);
 
-    console.log('🚀  Houston, lift of in 3..2..1');
+    await createFilesByList(files);
 
-    const tasks = [];
+    console.log('Done'); // eslint-disable-line no-console
 
-    if (station.preTakeoff !== undefined) {
-      tasks.push({
-        title: 'Pre Takeoff',
-        task: opts => station.preTakeoff(stationProps, opts)
-      });
-    }
-
-    tasks.push({
-      title: `Created files for station ${name}`,
-      task: ({emit, succeed}) => {
-        createFilesByList(files, emit).then(succeed);
-      }
-    });
-
-    if (station.postTakeoff !== undefined) {
-      tasks.push({
-        title: 'Post Takeoff',
-        task: opts => station.postTakeoff(stationProps, opts)
-      });
-    }
-
-    taskler(tasks, () => {
-      console.info(green('🎉  Done'));
-    });
   } catch (err) {
-    console.error(err);
+    console.error(err); // eslint-disable-line no-console
     process.exit(1);
   }
 })();
