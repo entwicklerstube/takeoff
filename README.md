@@ -2,7 +2,7 @@
 <br />
 <br />
 <p align="center">
-  <img src="https://mjz.io/eqsyu.svg" />
+  <!-- <img src="https://mjz.io/eqsyu.svg" /> -->
   <br />
   <br />
   <code>
