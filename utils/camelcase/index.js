@@ -1,5 +1,5 @@
 import { camel } from "change-case";
 
-export const Camelcase = (string = "") => camel(string);
+export const Camelcase = camel;
 
 export default Camelcase;
