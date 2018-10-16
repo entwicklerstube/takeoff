@@ -1,36 +1,59 @@
 {
-  "name": "takeoff-cli",
-  "version": "4.0.0",
-  "main": "index.js",
-  "repository": "git@github.com:entwicklerstube/takeoff.git",
-  "author": "michaelzoidl <github@michaelzoidl.com>",
-  "contributors": [
-    "Michael Zoidl <michael@entwicklerstube.com> (https://entwicklerstube.com/)",
-    "Jan Schmidle <jan@cospired.com> (https://cospired.com/)"
-  ],
-  "license": "MIT",
-  "dependencies": {
-    "fs-extra": "^3.0.1",
-    "inquirer": "^3.0.6",
-    "p-map": "^1.1.1"
+  "name": "takeoff",
+  "version": "5.0.0",
+  "description": "Scaffolding like it should be. Easy, fast and clean.",
+  "main": "takeoff.js",
+  "scripts": {
+    "start": "babel-node index",
+    "test": "jest",
+    "clean": "rimraf dist",
+    "build": "rollup --config rollup.config.js",
+    "takeoff": "takeoff"
   },
-  "devDependencies": {
-    "chai": "^4.0.0",
-    "eslint": "^5.3.0",
-    "mocha": "^5.2.0",
-    "mock-fs": "^4.3.0",
-    "mock-require": "^2.0.2",
-    "np": "^2.20.1"
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "files": [
+    "takeoff.js",
+    "utils.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/entwicklerstube/takeoff.git"
   },
   "bin": {
-    "takeoff": "cli.js"
+    "takeoff": "index.js"
   },
-  "engines": {
-    "node": ">=7.6"
+  "keywords": [
+    "scaffolding",
+    "takeoff"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/entwicklerstube/takeoff/issues"
   },
-  "scripts": {
-    "test": "mocha test.js",
-    "prepublishOnly": "np --no-publish",
-    "lint": "eslint ./**/*.js"
+  "homepage": "https://github.com/entwicklerstube/takeoff#readme",
+  "dependencies": {
+    "change-case": "^3.0.2",
+    "takeoff-cli": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "commander": "^2.19.0",
+    "inquirer": "^6.2.0",
+    "jest": "^23.6.0",
+    "mock-fs": "^4.7.0",
+    "prettier": "^1.14.3",
+    "rollup": "^0.66.6",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-multi-entry": "^2.0.2",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-terser": "^3.0.0"
   }
 }
