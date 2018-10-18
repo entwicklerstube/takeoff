@@ -2,38 +2,26 @@ import Camelcase from "./";
 
 describe("Util - camelcase", () => {
   it("returns a string", () => {
-    expect(typeof Camelcase()).toEqual("string");
-  });
-
-  it("returns pass string", () => {
-    expect(Camelcase("hello")).toEqual("hello");
+    expect(Camelcase(), "to be a string");
   });
 
   it("returns string replaced dash with camelcase", () => {
-    expect(Camelcase("hello-world")).toEqual("helloWorld");
+    expect(Camelcase("hello-world"), "to equal", "helloWorld");
   });
 
   it("returns string replaced whitespace with camelcase", () => {
-    expect(Camelcase("hello world")).toEqual("helloWorld");
-  });
-
-  it("returns string replaced multiple whitespace with camelcase", () => {
-    expect(Camelcase("hello      world")).toEqual("helloWorld");
+    expect(Camelcase("hello world"), "to equal", "helloWorld");
   });
 
   it("returns string replaced snake_case with camelcase", () => {
-    expect(Camelcase("hello_world")).toEqual("helloWorld");
+    expect(Camelcase("hello_world"), "to equal", "helloWorld");
   });
 
   it("returns string replaced PascalCase with camelcase", () => {
-    expect(Camelcase("HelloWorld")).toEqual("helloWorld");
+    expect(Camelcase("HelloWorld"), "to equal", "helloWorld");
   });
 
   it("returns string replaced uppercase with camelcase", () => {
-    expect(Camelcase("HELLO WORLD")).toEqual("helloWorld");
-  });
-
-  it("returns string replaced lowercase with camelcase", () => {
-    expect(Camelcase("hello world")).toEqual("helloWorld");
+    expect(Camelcase("HELLO WORLD"), "to equal", "helloWorld");
   });
 });

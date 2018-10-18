@@ -2,38 +2,26 @@ import SnakeCase from "./";
 
 describe("Util - SnakeCase", () => {
   it("returns a string", () => {
-    expect(typeof SnakeCase()).toEqual("string");
+    expect(SnakeCase(), "to be a string");
   });
 
-  it("returns pass string", () => {
-    expect(SnakeCase("hello")).toEqual("hello");
+  it("returns string replaced dash", () => {
+    expect(SnakeCase("hello-world"), "to equal", "hello_world");
   });
 
-  it("returns string replaced dash with snake_case", () => {
-    expect(SnakeCase("hello-world")).toEqual("hello_world");
+  it("returns string replaced whitespace", () => {
+    expect(SnakeCase("hello world"), "to equal", "hello_world");
   });
 
-  it("returns string replaced whitespace with snake_case", () => {
-    expect(SnakeCase("hello world")).toEqual("hello_world");
+  it("returns string replaced snake_case", () => {
+    expect(SnakeCase("hello_world"), "to equal", "hello_world");
   });
 
-  it("returns string replaced multiple whitespace with snake_case", () => {
-    expect(SnakeCase("hello      world")).toEqual("hello_world");
+  it("returns string replaced camelCase", () => {
+    expect(SnakeCase("helloWorld"), "to equal", "hello_world");
   });
 
-  it("returns string replaced snake_case with snake_case", () => {
-    expect(SnakeCase("hello_world")).toEqual("hello_world");
-  });
-
-  it("returns string replaced snake_case with snake_case", () => {
-    expect(SnakeCase("HelloWorld")).toEqual("hello_world");
-  });
-
-  it("returns string replaced uppercase with snake_case", () => {
-    expect(SnakeCase("HELLO WORLD")).toEqual("hello_world");
-  });
-
-  it("returns string replaced lowercase with snake_case", () => {
-    expect(SnakeCase("hello world")).toEqual("hello_world");
+  it("returns string replaced uppercase", () => {
+    expect(SnakeCase("HELLO WORLD"), "to equal", "hello_world");
   });
 });

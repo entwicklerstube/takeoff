@@ -5,13 +5,10 @@
   "main": "takeoff.js",
   "scripts": {
     "start": "babel-node index",
-    "test": "jest",
+    "test": "mocha ./lib/**/test.js ./utils/**/test.js -r ./mocha",
     "clean": "rimraf dist",
     "build": "rollup --config rollup.config.js",
     "takeoff": "takeoff"
-  },
-  "jest": {
-    "testEnvironment": "node"
   },
   "files": [
     "takeoff.js",
@@ -34,19 +31,18 @@
     "url": "https://github.com/entwicklerstube/takeoff/issues"
   },
   "homepage": "https://github.com/entwicklerstube/takeoff#readme",
-  "dependencies": {
-    "change-case": "^3.0.2",
-    "takeoff-cli": "^4.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/node": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
+    "change-case": "^3.0.2",
     "commander": "^2.19.0",
     "inquirer": "^6.2.0",
-    "jest": "^23.6.0",
+    "mocha": "^5.2.0",
     "mock-fs": "^4.7.0",
     "prettier": "^1.14.3",
     "rollup": "^0.66.6",
@@ -54,6 +50,8 @@
     "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-multi-entry": "^2.0.2",
     "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-terser": "^3.0.0"
+    "rollup-plugin-terser": "^3.0.0",
+    "takeoff-cli": "^4.0.0",
+    "unexpected": "^10.39.1"
   }
 }

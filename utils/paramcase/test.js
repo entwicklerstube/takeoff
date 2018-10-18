@@ -2,34 +2,26 @@ import ParamCase from "./";
 
 describe("Util - ParamCase", () => {
   it("returns a string", () => {
-    expect(typeof ParamCase()).toEqual("string");
+    expect(ParamCase(), "to be a string");
   });
 
-  it("returns pass string", () => {
-    expect(ParamCase("hello")).toEqual("hello");
+  it("returns string replaced dash", () => {
+    expect(ParamCase("hello-world"), "to equal", "hello-world");
   });
 
-  it("returns string replaced whitespace with paramcase", () => {
-    expect(ParamCase("hello world")).toEqual("hello-world");
+  it("returns string replaced whitespace", () => {
+    expect(ParamCase("hello world"), "to equal", "hello-world");
   });
 
-  it("returns string replaced multiple whitespace with paramcase", () => {
-    expect(ParamCase("hello      world")).toEqual("hello-world");
+  it("returns string replaced snake_case", () => {
+    expect(ParamCase("hello_world"), "to equal", "hello-world");
   });
 
-  it("returns string replaced snake_case with paramcase", () => {
-    expect(ParamCase("hello_world")).toEqual("hello-world");
+  it("returns string replaced PascalCase", () => {
+    expect(ParamCase("HelloWorld"), "to equal", "hello-world");
   });
 
-  it("returns string replaced camelcase with paramcase", () => {
-    expect(ParamCase("HelloWorld")).toEqual("hello-world");
-  });
-
-  it("returns string replaced uppercase with paramcase", () => {
-    expect(ParamCase("HELLO WORLD")).toEqual("hello-world");
-  });
-
-  it("returns string replaced lowercase with paramcase", () => {
-    expect(ParamCase("hello world")).toEqual("hello-world");
+  it("returns string replaced uppercase", () => {
+    expect(ParamCase("HELLO WORLD"), "to equal", "hello-world");
   });
 });
