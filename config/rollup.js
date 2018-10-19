@@ -4,7 +4,7 @@ import json from "rollup-plugin-json";
 import { terser } from "rollup-plugin-terser";
 import multiEntry from "rollup-plugin-multi-entry";
 
-const commonPlugins = [resolve(), commonjs(), json() /* terser() */];
+const commonPlugins = [resolve(), commonjs(), json() /*terser() */];
 
 const commonExternal = [
   "readline",
