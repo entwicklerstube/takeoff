@@ -7,7 +7,7 @@
 
 This is a absolute beta version, only work with it if you know what you're doing.
 
-## Contributing
+## Sneak peek
 
 #### Setup
 
@@ -16,6 +16,8 @@ To contribute clone the repo and checkout the v5 branch
 ```
 $ git clone git@github.com:entwicklerstube/takeoff.git
 ```
+
+Also checkout the `v5` branch see the newest changes
 
 Now you've two ways, either you run the tests:
 
