@@ -39,3 +39,13 @@ We're using the famous package [`debug`](https://www.npmjs.com/package/debug), s
 ```
 $ DEBUG=* node takeoff.js
 ```
+
+#### FAQ
+
+<details><summary>Will this work in Windows / Linux?</summary>
+  <img src="https://user-images.githubusercontent.com/528550/47322882-e52a7b00-d659-11e8-9f59-b3778a448196.gif" />
+  <p>
+    `takeoff` is not tested on other operating systems, i can not guarantee that it works. It could, if not create an
+    issue - i cant fix those, but maybe we will find someone who has the equipment to improve takeoff on other systems.
+  </p>
+</details>
