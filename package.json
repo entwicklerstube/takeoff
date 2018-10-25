@@ -48,6 +48,8 @@
     "commander": "^2.19.0",
     "debug": "^4.1.0",
     "inquirer": "^6.2.0",
+    "inquirer-test": "^2.0.1",
+    "jsdoc-to-markdown": "^4.0.1",
     "mocha": "^5.2.0",
     "mock-fs": "^4.7.0",
     "mock-prompt": "^0.1.3",
