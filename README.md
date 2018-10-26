@@ -7,11 +7,11 @@
 </p>
 <br />
 <br />
-takeoff is the perfect tool if you want to automate workflows with a command line integration.
 
-## :warning: Alpha
+[![Build Status](https://travis-ci.org/entwicklerstube/takeoff.svg?branch=master)](https://travis-ci.org/entwicklerstube/takeoff)
+[![Coverage Status](https://coveralls.io/repos/github/entwicklerstube/takeoff/badge.svg?branch=v5)](https://coveralls.io/github/entwicklerstube/takeoff?branch=v5)
 
-The `v5` is in active development, its not published on npm yet either is it usable if you build it on your machine, but you can start the tests which is nice.
+> takeoff is the perfect tool if you want to automate workflows with a command line integration.
 
 ## Features
 
