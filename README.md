@@ -15,17 +15,17 @@
 
 ## Features
 
-- 📦 Shipped in one file
-- 🧙‍ One Dependency to rule them all
-- 🔌 Plug & Play
-- 💎 No configuration required
-- 🌟 You can install it globaly or project-based
-- 🔍 Detects valid stations up the tree
-- 💡 Possible to import existing files and structures
-- ⏱ Save time by automating your workflow
-- 💁‍ Easy as f\*\*\* by only requiring 2 properties (`get`, `exec`)
-- 🕹 Interactive mode
-- 💚 Full tested
+<details><summary>📦 Shipped in one file</summary>details</details>
+<details><summary>🧙‍ One Dependency to rule them all</summary>details</details>
+<details><summary>🔌 Plug & Play</summary>details</details>
+<details><summary>💎 No configuration required</summary>details</details>
+<details><summary>🌟 You can install it globaly or project-based</summary>details</details>
+<details><summary>🔍 Detects valid stations up the tree</summary>details</details>
+<details><summary>💡 Possible to import existing files and structures</summary>details</details>
+<details><summary>⏱ Save time by automating your workflow</summary>details</details>
+<details><summary>💁‍ Easy as f\*\*\* by only requiring 2 properties (`get`, `exec`)</summary>details</details>
+<details><summary>🕹 Interactive mode</summary>details</details>
+<details><summary>💚 Full tested</summary>details</details>
 
 ## Install
 
