@@ -7,7 +7,7 @@
     "start": "babel-node index",
     "test": "mocha ./lib/**/test.js ./utils/**/test.js -r ./config/mocha",
     "test:coverage": "nyc --reporter=html --reporter=text mocha ./lib/**/test.js ./utils/**/test.js -r ./config/mocha",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "npm run test:coverage && nyc report --reporter=text-lcov | coveralls",
     "clean": "rimraf dist",
     "build": "rollup --config config/rollup.js",
     "takeoff": "takeoff"
