@@ -2,7 +2,7 @@ import command from "commander";
 import { version } from "./package.json";
 
 import findStations from "./lib/find-local-stations";
-// import stationsToInquirer from "./lib/stations-to-inquirer";
+import stationsToInquirer from "./lib/stations-to-inquirer";
 
 (async () => {
   command
@@ -32,8 +32,8 @@ import findStations from "./lib/find-local-stations";
 
     default: {
       const localStations = await findStations();
-      console.log(localStations);
-      // stationsToInquirer();
+
+      // await stationsToInquirer(localStations[0].stations[0].get);
 
       /*
       // The CLI Interface relays on the awesome API of inquirer, this module converts the station-data into the CLI prompts
