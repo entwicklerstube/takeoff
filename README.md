@@ -27,18 +27,17 @@
 - 🕹 Interactive mode
 - 💚 Full tested
 
-#### Compare
+## Install
 
-- Yeoman
-- Slush
-- takeoff
+🤭 This thing is so alpha that we didn't even publish it on npm
 
 ## Usage
 
-🤭 This thing is so alpha that we didn't even publish it on npm.
+> Work in progress
 
-- `get`, what information do you need for your station?
-- `exec` the function we will execute with the informations we got from `get`
+## Utils
+
+> Links to the util docs
 
 ## Contribute
 
@@ -75,5 +74,12 @@ $ DEBUG=* node takeoff.js
   <img src="https://user-images.githubusercontent.com/528550/47322882-e52a7b00-d659-11e8-9f59-b3778a448196.gif" />
   <p>
     Maybe, its not tested on Windows, since takeoff works a lot with the OS`file-system its more likely that there is something not working. If you step on a bug on windows just create an issue and describe it.
+  </p>
+</details>
+
+<details><summary>What about Yeoman or Slush??</summary>
+  <p>
+    Those tools are really great and you can do everything you can do with takeoff also with ones of these. The big difference
+    between other tools like them and takeoff is the focus on the maximum simple API and the focus of maximum CLI customisation.
   </p>
 </details>
