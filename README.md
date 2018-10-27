@@ -68,7 +68,7 @@ We're using the package [`debug`](https://www.npmjs.com/package/debug), so its e
 $ DEBUG=* node takeoff.js
 ```
 
-#### FAQ
+## FAQ
 
 <details><summary>Is Windows supported?</summary>
   <img src="https://user-images.githubusercontent.com/528550/47322882-e52a7b00-d659-11e8-9f59-b3778a448196.gif" />
