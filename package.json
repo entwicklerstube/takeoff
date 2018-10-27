@@ -38,8 +38,8 @@
     "url": "https://github.com/entwicklerstube/takeoff/issues"
   },
   "homepage": "https://github.com/entwicklerstube/takeoff#readme",
-  "dependencies": {},
   "devDependencies": {
+    "chalk": "^2.4.1",
     "@babel/core": "^7.1.2",
     "@babel/node": "^7.0.0",
     "@babel/polyfill": "^7.0.0",
