@@ -16,7 +16,6 @@
   <a href="https://github.com/entwicklerstube/takeoff/"><img alt="Github" src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat"/></a>
 </p>
 
-
 > 🚀 takeoff is the perfect tool if you want to automate workflows with a command line integration.
 
 ## Features
