@@ -8,11 +8,14 @@
 <br />
 <br />
 
-[![Build Status](https://travis-ci.org/entwicklerstube/takeoff.svg?branch=master)](https://travis-ci.org/entwicklerstube/takeoff)
-[![Coverage Status](https://coveralls.io/repos/github/entwicklerstube/takeoff/badge.svg?branch=v5)](https://coveralls.io/github/entwicklerstube/takeoff?branch=v5)
-[![Known Vulnerabilities](https://snyk.io/test/github/entwicklerstube/takeoff/badge.svg?targetFile=package.json)](https://snyk.io/test/github/entwicklerstube/takeoff?targetFile=package.json)
-[![Code style](https://img.shields.io/badge/codestyle-prettier-blue.svg)](https://prettier.io/)
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)](https://github.com/entwicklerstube/takeoff/)
+<p align="center">
+  <a href="https://travis-ci.org/entwicklerstube/takeoff"><img alt="Build Status" src="https://travis-ci.org/entwicklerstube/takeoff.svg?branch=master" /></a>
+  <a href="https://coveralls.io/github/entwicklerstube/takeoff?branch=v5"><img alt="Coverage Status" src="https://coveralls.io/repos/github/entwicklerstube/takeoff/badge.svg?branch=v5"/></a>
+  <a href="https://snyk.io/test/github/entwicklerstube/takeoff?targetFile=package.json"><img alt="Known Vulnerabilities" src="https://snyk.io/test/github/entwicklerstube/takeoff/badge.svg?targetFile=package.json"/></a>
+  <a href="https://prettier.io/"><img alt="Code style" src="https://img.shields.io/badge/codestyle-prettier-blue.svg"/></a>
+  <a href="https://github.com/entwicklerstube/takeoff/"><img alt="Github" src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat"/></a>
+</p>
+
 
 > 🚀 takeoff is the perfect tool if you want to automate workflows with a command line integration.
 
