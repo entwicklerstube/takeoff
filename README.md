@@ -10,6 +10,7 @@
 
 [![Build Status](https://travis-ci.org/entwicklerstube/takeoff.svg?branch=master)](https://travis-ci.org/entwicklerstube/takeoff)
 [![Coverage Status](https://coveralls.io/repos/github/entwicklerstube/takeoff/badge.svg?branch=v5)](https://coveralls.io/github/entwicklerstube/takeoff?branch=v5)
+[![Known Vulnerabilities](https://snyk.io/test/github/entwicklerstube/takeoff/badge.svg?targetFile=package.json)](https://snyk.io/test/github/entwicklerstube/takeoff?targetFile=package.json)
 
 > takeoff is the perfect tool if you want to automate workflows with a command line integration.
 
