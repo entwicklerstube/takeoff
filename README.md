@@ -10,7 +10,8 @@
 
 <p align="center">
   <a href="https://travis-ci.org/entwicklerstube/takeoff"><img alt="Build Status" src="https://travis-ci.org/entwicklerstube/takeoff.svg?branch=master" /></a>
-  <a href="https://coveralls.io/github/entwicklerstube/takeoff?branch=v5"><img alt="Coverage Status" src="https://coveralls.io/repos/github/entwicklerstube/takeoff/badge.svg?branch=v5"/></a>
+  <a href="https://www.npmjs.com/package/takeoff-cli"><img alt="npm Version" src="https://img.shields.io/npm/v/takeoff-cli.svg" /></a>
+  <a href="https://coveralls.io/github/entwicklerstube/takeoff"><img alt="Coverage Status" src="https://coveralls.io/repos/github/entwicklerstube/takeoff/badge.svg"/></a>
   <a href="https://snyk.io/test/github/entwicklerstube/takeoff?targetFile=package.json"><img alt="Known Vulnerabilities" src="https://snyk.io/test/github/entwicklerstube/takeoff/badge.svg?targetFile=package.json"/></a>
   <a href="https://prettier.io/"><img alt="Code style" src="https://img.shields.io/badge/codestyle-prettier-blue.svg"/></a>
   <a href="https://github.com/entwicklerstube/takeoff/"><img alt="Github" src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat"/></a>
@@ -20,17 +21,18 @@
 
 ## Features
 
-- 📦 Shipped in one file
-- 🧙‍ One Dependency to rule them all
+- 💁‍ Easy as fck requiring 2 properties (`get`, `exec`)
 - 🔌 Plug & Play
 - 💎 No configuration required
 - 🌟 You can install it globaly or project-based
+- 🧙‍ One Dependency to rule them all
+- 📦 Shipped with a bunch of useful utils you will need
 - 🔍 Detects valid stations up the tree
-- 💡 Possible to import existing files and structures
+- 💡 Import existing files and structures
 - ⏱ Save time by automating your workflow
-- 💁‍ Easy as f by only requiring 2 properties (`get`, `exec`)
 - 🕹 Interactive mode
-- 💚 Full tested
+- 💚 Full tested with coverage check
+- ⚡️ Battle-tested, its used in several >1000 employee companies
 
 ## Install
 
@@ -46,7 +48,7 @@
 
 ## Contribute
 
-To contribute clone the repo and checkout the v5 branch
+To contribute clone the repo
 
 ```
 $ git clone git@github.com:entwicklerstube/takeoff.git
