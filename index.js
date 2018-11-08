@@ -1,4 +1,6 @@
+import inquirer from "inquirer";
 import command from "commander";
+
 import { version } from "./package.json";
 
 import findStations from "./lib/find-local-stations";
@@ -33,7 +35,20 @@ import stationsToInquirer from "./lib/stations-to-inquirer";
     default: {
       const localStations = await findStations();
 
-      // await stationsToInquirer(localStations[0].stations[0].get);
+      const inquirerChoices = stationsToInquirer(localStations);
+      const { selectedStationId } = await inquirer.prompt(inquirerChoices);
+
+      const accumulatedStations = [].concat(
+        ...localStations.map(({ stations }) => stations)
+      );
+
+      const selectedStation = accumulatedStations.find(
+        station => station.id === selectedStationId
+      );
+
+      console.log(selectedStation);
+
+      // const stationGetChoices = getToInquirer(selectedStation.get);
 
       /*
       // The CLI Interface relays on the awesome API of inquirer, this module converts the station-data into the CLI prompts
