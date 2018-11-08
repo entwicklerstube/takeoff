@@ -67,6 +67,7 @@
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-terser": "^3.0.0",
     "takeoff-cli": "^4.0.0",
-    "unexpected": "^10.39.1"
+    "unexpected": "^10.39.1",
+    "nanoid": "^2.0.0"
   }
 }
