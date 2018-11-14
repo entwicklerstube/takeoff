@@ -21,14 +21,13 @@
 
 ## Features
 
-- 💁‍ Easy as fck requiring 2 properties (`get`, `exec`)
+- 💁‍ Ultra-Easy™️ requiring only two properties (`get`, `exec`)
 - 🔌 Plug & Play
 - 💎 No configuration required
 - 🌟 You can install it globaly or project-based
 - 🧙‍ One Dependency to rule them all
-- 📦 Shipped with a bunch of useful utils you will need
+- 📦 Shipped with a bunch of useful utils
 - 🔍 Detects valid stations up the tree
-- 💡 Import existing files and structures
 - ⏱ Save time by automating your workflow
 - 🕹 Interactive mode
 - 💚 Full tested with coverage check
