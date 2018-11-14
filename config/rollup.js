@@ -1,42 +1,47 @@
-import resolve from "rollup-plugin-node-resolve";
-import commonjs from "rollup-plugin-commonjs";
-import json from "rollup-plugin-json";
-import { terser } from "rollup-plugin-terser";
-import multiEntry from "rollup-plugin-multi-entry";
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
+import json from 'rollup-plugin-json';
+import { terser } from 'rollup-plugin-terser';
+import multiEntry from 'rollup-plugin-multi-entry';
 
-const commonPlugins = [resolve(), commonjs(), json() /*terser() */];
+const commonPlugins = [
+  resolve(),
+  commonjs({ ignore: ['conditional-runtime-dependency'] }),
+  json() /*terser() */
+];
 
 const commonExternal = [
-  "readline",
-  "stream",
-  "tty",
-  "child_process",
-  "fs",
-  "string_decoder",
-  "os",
-  "path",
-  "crypto",
-  "util",
-  "buffer",
-  "events",
-  "assert"
+  'readline',
+  'stream',
+  'tty',
+  'child_process',
+  'fs',
+  'string_decoder',
+  'os',
+  'path',
+  'crypto',
+  'util',
+  'buffer',
+  'events',
+  'assert',
+  'module'
 ];
 
 export default [
   {
-    input: "index.js",
+    input: 'index.js',
     output: {
-      file: "takeoff.js",
-      format: "cjs"
+      file: 'takeoff.js',
+      format: 'cjs'
     },
     plugins: commonPlugins,
     external: commonExternal
   },
   {
-    input: "utils/**/!(test).js",
+    input: 'utils/**/!(test).js',
     output: {
-      file: "utils.js",
-      format: "cjs"
+      file: 'utils.js',
+      format: 'cjs'
     },
     plugins: [multiEntry(), ...commonPlugins],
     external: commonExternal
