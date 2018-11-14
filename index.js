@@ -1,33 +1,25 @@
-import inquirer from "inquirer";
-import command from "commander";
+import inquirer from 'inquirer';
+import command from 'commander';
+import Listr from 'listr';
+import assign from 'lodash.assign';
 
-import { version } from "./package.json";
+import { version } from './package.json';
 
-import findStations from "./lib/find-local-stations";
-import stationsToInquirer from "./lib/stations-to-inquirer";
+import findStations from './lib/find-local-stations';
+import stationsToInquirer from './lib/stations-to-inquirer';
+import getToInquirer from './lib/get-to-inquirer';
 
 (async () => {
   command
     .version(version)
-    .command("takeoff <station>")
-    .option(
-      "--import",
-      "Import / convert an existing file or hirachy into a station."
-    )
-    .option("--init", "Initialize takeoff in the current folder")
+    .command('takeoff <station>')
+    .option('--init', 'Initialize takeoff in the current folder')
     .parse(process.argv);
 
   switch (true) {
-    case command.import: {
-      console.log(
-        "IMPORT, pass path of a file/folder and we will move it to the stationPath (can also be passed)"
-      );
-      break;
-    }
-
     case command.init: {
       console.log(
-        "INIT, creates a .takeoff folder within a easy example station"
+        'INIT, creates a .takeoff folder within a easy example station'
       );
       break;
     }
@@ -35,38 +27,38 @@ import stationsToInquirer from "./lib/stations-to-inquirer";
     default: {
       const localStations = await findStations();
 
-      const inquirerChoices = stationsToInquirer(localStations);
-      const { selectedStationId } = await inquirer.prompt(inquirerChoices);
-
       const accumulatedStations = [].concat(
         ...localStations.map(({ stations }) => stations)
+      );
+
+      const inquirerStationChoices = stationsToInquirer(localStations);
+      const { selectedStationId } = await inquirer.prompt(
+        inquirerStationChoices
       );
 
       const selectedStation = accumulatedStations.find(
         station => station.id === selectedStationId
       );
 
-      console.log(selectedStation);
+      const answers = [];
+      const questions = await getToInquirer(selectedStation.get);
 
-      // const stationGetChoices = getToInquirer(selectedStation.get);
+      for (const question of questions) {
+        const answer = await inquirer.prompt(
+          await question(assign(...answers))
+        );
+        answers.push(answer);
+      }
 
-      /*
-      // The CLI Interface relays on the awesome API of inquirer, this module converts the station-data into the CLI prompts
-      // Execute this if a user runs takeoff without arguments
-      const { station, props } = await stationsToInquirer(localStations);
+      // NEXT SCHRITT
+      // await executeStation({ station: selectedStation.exec, answers });
 
-      // Now we know what station we want to execute with what properties, try it! Show a indicator
-      console.log(
-        "we want to execute the station with the props",
-        executeStation
-      );
-
-      // Resolve the exec, this works also if the exec is not a promise
-      await Promise.resolve(station.exec.bind(props));
-
-      process.stdout.write('Yay, we`re done');
-
-      */
+      // new Listr([
+      //   {
+      //     title: 'Execute',
+      //     task: (_, task) => selectedStation.exec(assign(...answers), task)
+      //   }
+      // ]).run();
     }
   }
 })();
