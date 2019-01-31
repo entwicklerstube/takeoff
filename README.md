@@ -21,7 +21,7 @@
 
 ## Features
 
-- 💁‍ Ultra-Easy™️ requiring only two properties (`get`, `exec`)
+- 💁‍ Ultra-Easy™ requiring only two properties (`get`, `exec`)
 - 🔌 Plug & Play
 - 💎 No configuration required
 - 🌟 You can install it globaly or project-based
@@ -39,11 +39,34 @@
 
 ## Usage
 
-> Work in progress
+Checkout some examples how takeoff can be used
+
+**Basic example**
+
+```js
+module.exports = {
+  get: 'firstname',
+  exec: name => {
+    console.log(`👋 Hello ${name}`);
+  }
+};
+```
+
+**Create a folder in the current directory**
 
 ## Utils
 
-> Links to the util docs
+|                |     Name      | Description                                 |     |
+| -------------- | :-----------: | ------------------------------------------- | --: |
+| **Cases**      |               |                                             |     |
+|                |  `Camelcase`  | Changes the case of a string to _camelCase_ |  ✅ |
+|                |  `Paramcase`  |                                             |  ✅ |
+|                | `Pascalcase`  |                                             |  ✅ |
+|                |  `Snakecase`  |                                             |  ✅ |
+| **FileSystem** |               |                                             |     |
+|                | `GetFileTree` | Returns a file-tree based from the          |  🔨 |
+
+[» Checkout the documentation for more details](utils/UTILS.md)
 
 ## Contribute
 
