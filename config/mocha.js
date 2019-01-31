@@ -1,4 +1,7 @@
-require("@babel/register");
-require("@babel/polyfill");
+require('@babel/register');
+require('@babel/polyfill');
 
-global.expect = require("unexpected");
+const expect = require('unexpected').clone();
+expect.use(require('unexpected-sinon'));
+
+global.expect = expect;
