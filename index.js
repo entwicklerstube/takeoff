@@ -1,31 +1,35 @@
 import inquirer from 'inquirer';
 import command from 'commander';
-import Listr from 'listr';
 import assign from 'lodash.assign';
 
 import { version } from './package.json';
 
-import findStations from './lib/find-local-stations';
+import findLocalStations from './lib/find-local-stations';
 import stationsToInquirer from './lib/stations-to-inquirer';
 import getToInquirer from './lib/get-to-inquirer';
+import executeStation from './lib/execute-station';
 
 (async () => {
   command
     .version(version)
-    .command('takeoff <station>')
+    // .command('takeoff <station>')
     .option('--init', 'Initialize takeoff in the current folder')
+    .option(
+      '--stations-folder [path]',
+      'Pass a custom path where takeoff should search for stations'
+    )
     .parse(process.argv);
 
   switch (true) {
     case command.init: {
-      console.log(
-        'INIT, creates a .takeoff folder within a easy example station'
-      );
+      console.log('Work in progress...');
       break;
     }
 
     default: {
-      const localStations = await findStations();
+      const localStations = await findLocalStations({
+        stationsDir: command.stationsFolder
+      });
 
       const accumulatedStations = [].concat(
         ...localStations.map(({ stations }) => stations)
@@ -50,15 +54,7 @@ import getToInquirer from './lib/get-to-inquirer';
         answers.push(answer);
       }
 
-      // NEXT SCHRITT
-      // await executeStation({ station: selectedStation.exec, answers });
-
-      // new Listr([
-      //   {
-      //     title: 'Execute',
-      //     task: (_, task) => selectedStation.exec(assign(...answers), task)
-      //   }
-      // ]).run();
+      await executeStation(selectedStation.exec, answers);
     }
   }
 })();
