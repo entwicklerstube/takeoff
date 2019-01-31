@@ -10,7 +10,7 @@
     "coveralls": "npm run test:coverage && nyc report --reporter=text-lcov | coveralls",
     "clean": "rimraf dist",
     "build": "rollup --config config/rollup.js",
-    "takeoff": "takeoff",
+    "takeoff": "takeoff --stations-folder config/stations",
     "document:utils": "jsdoc2md utils/**/*.js > utils/UTILS.md"
   },
   "files": [
@@ -73,7 +73,9 @@
     "rollup-plugin-multi-entry": "^2.0.2",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-terser": "^3.0.0",
+    "sinon": "^7.1.1",
     "takeoff-cli": "^4.0.0",
-    "unexpected": "^10.39.1"
+    "unexpected": "^10.39.1",
+    "unexpected-sinon": "^10.10.1"
   }
 }
