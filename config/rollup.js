@@ -7,7 +7,8 @@ import multiEntry from 'rollup-plugin-multi-entry';
 const commonPlugins = [
   resolve(),
   commonjs({ ignore: ['conditional-runtime-dependency'] }),
-  json() /*terser() */
+  json()
+  // terser()
 ];
 
 const commonExternal = [
