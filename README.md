@@ -51,6 +51,10 @@ module.exports = {
   }
 };
 ```
+**Result**:<br />
+<p align="center">
+<img width="800" src="https://user-images.githubusercontent.com/528550/52242607-6fc87a80-28d7-11e9-8095-19e2f4e713b9.gif" />
+</p>
 
 **Create a folder in the current directory**
 
