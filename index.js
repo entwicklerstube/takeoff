@@ -12,7 +12,7 @@ import executeStation from './lib/execute-station';
 (async () => {
   command
     .version(version)
-    // .command('takeoff <station>')
+    .command('takeoff <station>')
     .option('--init', 'Initialize takeoff in the current folder')
     .option(
       '--stations-folder [path]',
