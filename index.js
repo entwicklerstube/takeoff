@@ -1,6 +1,7 @@
 import inquirer from 'inquirer';
 import command from 'commander';
 import assign from 'lodash.assign';
+import debug from 'debug';
 
 import { version } from './package.json';
 
@@ -9,16 +10,21 @@ import stationsToInquirer from './lib/stations-to-inquirer';
 import getToInquirer from './lib/get-to-inquirer';
 import executeStation from './lib/execute-station';
 
+const log = debug('takeoff:init');
+
 (async () => {
   command
     .version(version)
-    .command('takeoff <station>')
-    .option('--init', 'Initialize takeoff in the current folder')
+    // .command('takeoff <station>')
     .option(
       '--stations-folder [path]',
       'Pass a custom path where takeoff should search for stations'
     )
     .parse(process.argv);
+
+  if (command.stationsFolder) {
+    log(`Use custom stations folder ${command.stationsFolder}`);
+  }
 
   switch (true) {
     case command.init: {
@@ -30,6 +36,8 @@ import executeStation from './lib/execute-station';
       const localStations = await findLocalStations({
         stationsDir: command.stationsFolder
       });
+
+      console.log(localStations);
 
       const accumulatedStations = [].concat(
         ...localStations.map(({ stations }) => stations)
