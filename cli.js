@@ -65,7 +65,7 @@ const getStationId = async stations => {
 
     const stationProps = await inquirer.prompt(requiredStationProps);
 
-    const { files } = station.run(stationProps);
+    const { files } = await station.run(stationProps);
 
     await createFilesByList(files);
 
