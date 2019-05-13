@@ -59,6 +59,8 @@ module.exports = {
 };
 ```
 
+Note that `run(props)` can be asynchronous (via `async` or by returning a Promise).
+
 ## Stations discovery
 takeoff discovers all stations (.takeoff folders) beginning from the execution directory up to the root path. This makes it possible to have different stations in different contextes. E.g. you could have some Project specific, some Customer specific and some global stations defined.
 
