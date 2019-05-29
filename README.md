@@ -38,19 +38,19 @@
 **npm**
 
 ```
-npm install takeoff -g
+npm install takeoff-cli@next -g
 ```
 
 **yarn**
 
 ```
-yarn global add takeoff -g
+yarn global add takeoff-cli@next -g
 ```
 
 **npx**
 
 ```
-npx takeoff
+npx takeoff-cli@next
 ```
 
 **Project based**
@@ -58,7 +58,7 @@ npx takeoff
 > Sometimes you don't want to install things global, you can also install takeoff only in specific projects
 
 ```
-npm install takeoff --save-dev
+npm install takeoff-cli@next --save-dev
 ```
 
 Add to `scripts` in `package.json`:
