@@ -1,4 +1,4 @@
-const { pascalCase } = require('../../../utils');
+const { pascalCase } = require('../../../utils.js');
 
 module.exports = props => `import ${pascalCase(props.name)} from "./";
 

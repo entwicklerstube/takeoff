@@ -1,4 +1,4 @@
-const pascalCase = require("change-case").pascalCase;
+const { pascalCase } = require('../../../utils.js');
 
 module.exports = props => `export const ${pascalCase(props.name)} = () => {
   return true;
