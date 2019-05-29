@@ -35,40 +35,130 @@
 
 ## Install
 
-🤭 This thing is so alpha that we didn't even publish it on npm
+**npm**
+
+```
+npm install takeoff -g
+```
+
+**yarn**
+
+```
+yarn global add takeoff -g
+```
+
+**npx**
+
+```
+npx takeoff
+```
+
+**Project based**
+
+> Sometimes you don't want to install things global, you can also install takeoff only in specific projects
+
+```
+npm install takeoff --save-dev
+```
+
+Add to `scripts` in `package.json`:
+
+```json
+{
+  "scripts": {
+    "takeoff": "takeoff"
+  }
+}
+```
+
+Then use takeoff in the project with:
+
+```
+npm run takeoff
+```
 
 ## Usage
 
-Checkout some examples how takeoff can be used
+> Simple example which shows how fast you can create a automation
 
-**Basic example**
+1. Create a file: `.takeoff/basic-example.js`
 
 ```js
 module.exports = {
   get: 'firstname',
-  exec: name => {
-    console.log(`👋 Hello ${name}`);
+  exec: ({ firstname }) => {
+    console.log(`👋 Hello ${firstname}`);
   }
 };
 ```
-**Result**:<br />
+
+2. Run `takeoff` in the folder
+
 <p align="center">
 <img width="800" src="https://user-images.githubusercontent.com/528550/52242607-6fc87a80-28d7-11e9-8095-19e2f4e713b9.gif" />
 </p>
 
-**Create a folder in the current directory**
+## API
+
+#### Station
+
+> A station is a `object` which can have the following properties
+
+| Property      |   Type   | Required? | Description                                                                        |
+| ------------- | :------: | :-------: | ---------------------------------------------------------------------------------- |
+| `get`         |    \*    |     ✓     | This will generate the prompts in the terminal                                     |
+| `exec`        | Function |     ✓     | Function starts when all `get` prompts are filled. Async and Promises are possible |
+| `name`        |  String  |           | Give the station a better name (default is the filename of the station)            |
+| `description` |  String  |           | Add a short description which will be shown beside the name in the CLI             |
+
+**Full Example**
+
+```js
+{
+  name: 'Get name',
+  description: 'Ask for user details',
+  get: [
+    'Firstname',
+    'Lastname',
+    () => [
+      'Age',
+      (f) => new Promise(resolve => {
+        console.log(42, f)
+        setTimeout(() => {
+          resolve(() => 'Gender')
+        }, 500)
+      })
+    ]
+  ],
+  exec: function() {
+    console.log('Hello World!');
+  }
+}
+```
+
+### CLI
+
+```
+Usage: takeoff [options]
+
+Options:
+  -V, --version             output the version number
+  --stations-folder [path]  Pass a custom path where takeoff should search for stations
+  -h, --help                output usage information
+```
 
 ## Utils
 
-|                |     Name      | Description                                 |     |
-| -------------- | :-----------: | ------------------------------------------- | --: |
-| **Cases**      |               |                                             |     |
-|                |  `Camelcase`  | Changes the case of a string to _camelCase_ |  ✅ |
-|                |  `Paramcase`  |                                             |  ✅ |
-|                | `Pascalcase`  |                                             |  ✅ |
-|                |  `Snakecase`  |                                             |  ✅ |
-| **FileSystem** |               |                                             |     |
-|                | `GetFileTree` | Returns a file-tree based from the          |  🔨 |
+|                |      Name      | Description                                 |     |
+| -------------- | :------------: | ------------------------------------------- | --: |
+| **Cases**      |                |                                             |     |
+|                |  `Camelcase`   | Hello World ⏩ helloWorld                   |  ✅ |
+|                |  `Paramcase`   | Hello World ⏩ hello-world                  |  ✅ |
+|                |  `Pascalcase`  | Hello World ⏩ HelloWorld                   |  ✅ |
+|                |  `Snakecase`   | Hello World ⏩ Hello_World                  |  ✅ |
+| **FileSystem** |                |                                             |     |
+|                |  `CreateFile`  | Create a file by passing a path and content |  ✅ |
+|                | `CreateFolder` | Create a folder by passing a path           |  ✅ |
 
 [» Checkout the documentation for more details](utils/UTILS.md)
 
@@ -95,24 +185,8 @@ $ node takeoff.js
 
 #### Debug
 
-We're using the package [`debug`](https://www.npmjs.com/package/debug), so its enough to just set use the env variable DEBUG with an globa like:
+We're using the package [`debug`](https://www.npmjs.com/package/debug), so its enough to just set use the env variable DEBUG with an global like:
 
 ```
-$ DEBUG=* node takeoff.js
+$ DEBUG=takeoff node takeoff.js
 ```
-
-## FAQ
-
-<details><summary>Is Windows supported?</summary>
-  <img src="https://user-images.githubusercontent.com/528550/47322882-e52a7b00-d659-11e8-9f59-b3778a448196.gif" />
-  <p>
-    Maybe, its not tested on Windows, since takeoff works a lot with the OS`file-system its more likely that there is something not working. If you step on a bug on windows just create an issue and describe it.
-  </p>
-</details>
-
-<details><summary>What about Yeoman or Slush??</summary>
-  <p>
-    Those tools are really great and you can do everything you can do with takeoff also with ones of these. The big difference
-    between other tools like them and takeoff is the focus on the maximum simple API and the focus of maximum CLI customisation.
-  </p>
-</details>
