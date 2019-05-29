@@ -1,5 +1,5 @@
-import { pascalCase } from "change-case";
+import changeCase from 'change-case';
 
-export const PascalCase = pascalCase;
+export const pascalCase = changeCase.pascalCase;
 
-export default PascalCase;
+export default pascalCase;

@@ -1,14 +1,15 @@
-import { mkdir } from 'fs';
+import { writeFile } from 'fs';
+import { join } from 'path';
 
 /**
  * Create a foder
- * @import `import { createFolder } from 'takeoff/utils'`
+ * @import `import { createFile } from 'takeoff/utils'`
  * @example
- * await createFolder('hello-world')
- * // => successfully created the folder 'hello-world' in the "__dirname" folder
+ * await createFile('world.md')
+ * // => successfully created the file 'world.md' in the "__dirname" folder
  */
-export const createFolder = async (path, options = {}) => {
-  mkdir(path, options, err => {
+export const createFile = async (path, content, encoding = 'utf-8') => {
+  writeFile(path, content, encoding, err => {
     if (err) {
       throw err;
     }
@@ -16,4 +17,4 @@ export const createFolder = async (path, options = {}) => {
   });
 };
 
-export default createFolder;
+export default createFile;
