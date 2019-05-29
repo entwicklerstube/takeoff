@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import debug from 'debug';
 import prompts from 'prompts';
 

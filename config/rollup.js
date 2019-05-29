@@ -33,7 +33,8 @@ export default [
     input: 'index.js',
     output: {
       file: 'takeoff.js',
-      format: 'cjs'
+      format: 'cjs',
+      banner: '#!/usr/bin/env node'
     },
     plugins: commonPlugins,
     external: commonExternal
