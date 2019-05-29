@@ -1,15 +1,10 @@
-// import inquirer from 'inquirer';
-// import assign from 'lodash.assign';
+#!/usr/bin/env node
 import debug from 'debug';
 import prompts from 'prompts';
-import chalk from 'chalk';
 
 import { version } from './package.json';
 
 import discoverStations from './lib/discover-stations';
-// import stationsToInquirer from './lib/stations-to-inquirer';
-// import getToInquirer from './lib/get-to-inquirer';
-// import executeStation from './lib/execute-station';
 import parseArgv from './lib/parse-argv';
 import stationPrompts from './lib/station-prompts';
 
