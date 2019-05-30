@@ -29,16 +29,14 @@ const log = debug('takeoff:init');
 
       const choices = stationPrompts(stations);
 
-      console.log(stations);
+      const selectedStationId = await prompts({
+        type: 'select',
+        name: 'value',
+        message: 'select dude',
+        choices
+      });
 
-      // const selectedStationId = await prompts({
-      //   type: 'select',
-      //   name: 'value',
-      //   message: 'select dude',
-      //   choices
-      // });
-
-      // console.log(selectedStationId);
+      console.log('selected station', selectedStationId);
 
       // const selectedStation = await prompts(stationPrompts(stations));
 
