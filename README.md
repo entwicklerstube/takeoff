@@ -25,7 +25,6 @@
 - 🔌 Plug & Play
 - 💎 No configuration required
 - 🌟 You can install it globaly or project-based
-- 🧙‍ One Dependency to rule them all
 - 📦 Shipped with a bunch of useful utils
 - 🔍 Detects valid stations up the tree
 - ⏱ Save time by automating your workflow
@@ -66,7 +65,7 @@ Add to `scripts` in `package.json`:
 ```json
 {
   "scripts": {
-    "takeoff": "takeoff"
+    "takeoff": "takeoff-cli"
   }
 }
 ```
@@ -84,10 +83,15 @@ npm run takeoff
 1. Create a file: `.takeoff/basic-example.js`
 
 ```js
+const { createFile, paramCase } = require('takeoff/utils');
+
 module.exports = {
-  get: 'firstname',
-  exec: ({ firstname }) => {
-    console.log(`👋 Hello ${firstname}`);
+  get: 'util-name',
+  exec: async ({ utilName }) => {
+    await createFile(
+      `utils/${paramCase(utilName)}.js`,
+      `console.log('My Util is ${utilName}')`
+    );
   }
 };
 ```
@@ -111,7 +115,7 @@ module.exports = {
 | `name`        |  String  |           | Give the station a better name (default is the filename of the station)            |
 | `description` |  String  |           | Add a short description which will be shown beside the name in the CLI             |
 
-**Full Example**
+**Advanced Example**
 
 ```js
 {
@@ -122,8 +126,7 @@ module.exports = {
     'Lastname',
     () => [
       'Age',
-      (f) => new Promise(resolve => {
-        console.log(42, f)
+      () => new Promise(resolve => {
         setTimeout(() => {
           resolve(() => 'Gender')
         }, 500)
@@ -188,5 +191,5 @@ $ node takeoff.js
 We're using the package [`debug`](https://www.npmjs.com/package/debug), so its enough to just set use the env variable DEBUG with an global like:
 
 ```
-$ DEBUG=takeoff node takeoff.js
+$ DEBUG=* takeoff
 ```
