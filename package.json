@@ -1,6 +1,6 @@
 {
   "name": "takeoff-cli",
-  "version": "5.0.5",
+  "version": "5.0.6",
   "description": "Scaffolding like it should be. Easy, fast and clean.",
   "main": "takeoff.js",
   "scripts": {
