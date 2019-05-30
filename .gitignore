@@ -1,7 +1,6 @@
 node_modules
-dist
 coverage
 .nyc_output
 .DS_Store
-/takeoff.js
-/utils.js
+takeoff.js
+utils.js
