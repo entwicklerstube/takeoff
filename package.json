@@ -1,6 +1,6 @@
 {
   "name": "takeoff-cli",
-  "version": "5.0.2",
+  "version": "5.0.5",
   "description": "Scaffolding like it should be. Easy, fast and clean.",
   "main": "takeoff.js",
   "scripts": {
@@ -12,7 +12,8 @@
     "build": "rollup --config config/rollup.js",
     "takeoff": "takeoff --stations-folder config/stations",
     "document:utils": "jsdoc2md utils/**/*.js > utils/UTILS.md",
-    "publish:next": "npm publish --tag next"
+    "publish:next": "npm publish --tag next",
+    "patch": "npm version --no-git-tag-version patch"
   },
   "files": [
     "takeoff.js",
@@ -47,27 +48,16 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/register": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
-    "chalk": "^2.4.1",
-    "change-case": "^3.0.2",
     "coveralls": "^3.0.2",
-    "debug": "^4.1.0",
     "eslint": "^5.7.0",
-    "got": "^9.3.2",
-    "inquirer": "^6.2.0",
     "inquirer-test": "^2.0.1",
     "jsdoc-to-markdown": "^4.0.1",
-    "kleur": "^3.0.3",
-    "listr": "^0.14.2",
-    "lodash.assign": "^4.2.0",
-    "lodash.merge": "^4.6.1",
     "mocha": "^5.2.0",
     "mock-fs": "^4.7.0",
     "mock-prompt": "^0.1.3",
     "mock-require": "^3.0.2",
-    "nanoid": "^2.0.0",
     "nyc": "^13.1.0",
     "prettier": "^1.14.3",
-    "prompts": "^2.1.0",
     "rollup": "^0.66.6",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-json": "^3.1.0",
@@ -77,5 +67,18 @@
     "sinon": "^7.1.1",
     "unexpected": "^10.39.1",
     "unexpected-sinon": "^10.10.1"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "change-case": "^3.0.2",
+    "debug": "^4.1.0",
+    "got": "^9.3.2",
+    "prompts": "^2.1.0",
+    "nanoid": "^2.0.0",
+    "kleur": "^3.0.3",
+    "listr": "^0.14.2",
+    "lodash.assign": "^4.2.0",
+    "lodash.merge": "^4.6.1",
+    "inquirer": "^6.2.0"
   }
 }

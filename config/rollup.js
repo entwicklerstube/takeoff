@@ -5,7 +5,7 @@ import { terser } from 'rollup-plugin-terser';
 import multiEntry from 'rollup-plugin-multi-entry';
 
 const commonPlugins = [
-  resolve(),
+  // resolve(),
   commonjs({ ignore: ['conditional-runtime-dependency'] }),
   json()
   // terser()
@@ -36,8 +36,8 @@ export default [
       format: 'cjs',
       banner: '#!/usr/bin/env node'
     },
-    plugins: commonPlugins,
-    external: commonExternal
+    plugins: commonPlugins
+    // external: commonExternal
   },
   {
     input: 'utils/**/!(test).js',
@@ -45,7 +45,7 @@ export default [
       file: 'utils.js',
       format: 'cjs'
     },
-    plugins: [multiEntry(), ...commonPlugins],
-    external: commonExternal
+    plugins: [multiEntry(), ...commonPlugins]
+    // external: commonExternal
   }
 ];
