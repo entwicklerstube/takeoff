@@ -23,20 +23,23 @@ const log = debug('takeoff:init');
     }
 
     default: {
+      // const { stationsByPath, accumulatedStations } = await discoverStations({
       const stations = await discoverStations({
         stationsDir: flags.stationsFolder
       });
 
-      const choices = stationPrompts(stations);
+      const stationChoices = stationPrompts(stations);
 
       const selectedStationId = await prompts({
         type: 'select',
         name: 'value',
-        message: 'select dude',
-        choices
+        message: 'Select a station',
+        choices: stationChoices
       });
 
       console.log('selected station', selectedStationId);
+
+      // const getChoices = getPrompts(selectedStation.get);
 
       // const selectedStation = await prompts(stationPrompts(stations));
 
