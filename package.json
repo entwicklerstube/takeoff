@@ -1,36 +1,14 @@
 {
   "name": "takeoff-cli",
-  "version": "4.1.0",
+  "version": "6.0.0",
   "main": "index.js",
   "repository": "git@github.com:entwicklerstube/takeoff.git",
   "author": "michaelzoidl <github@michaelzoidl.com>",
   "contributors": [
-    "Michael Zoidl <michael@entwicklerstube.com> (https://entwicklerstube.com/)",
-    "Jan Schmidle <jan@cospired.com> (https://cospired.com/)"
+    "Michael Zoidl <michael@entwicklerstube.com> (https://entwicklerstube.com/)"
   ],
   "license": "MIT",
-  "dependencies": {
-    "fs-extra": "^8.0.0",
-    "inquirer": "^3.0.6",
-    "p-map": "^1.1.1"
-  },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "eslint": "^5.16.0",
-    "mocha": "^6.1.4",
-    "mock-fs": "^4.9.0",
-    "mock-require": "^3.0.3",
-    "np": "^2.20.1"
-  },
-  "bin": {
-    "takeoff": "cli.js"
-  },
-  "engines": {
-    "node": ">=7.6"
-  },
-  "scripts": {
-    "test": "mocha test.js",
-    "prepublishOnly": "np --no-publish",
-    "lint": "eslint ./**/*.js"
-  }
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {}
 }
