@@ -10,15 +10,18 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^26.0.4",
-    "babel-jest": "^26.1.0",
-    "jest": "^26.1.0",
-    "ts-jest": "^26.1.1",
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "@types/mock-fs": "^4.10.0",
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1",
+    "mock-fs": "^4.12.0",
+    "ts-mocha": "^7.0.0",
+    "ts-node": "^8.10.2",
     "typescript": "^3.9.6"
   },
   "scripts": {
     "build": "tsc",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "ts-mocha -p tsconfig.json lib/**/test.ts -r mocha.js"
   }
 }
