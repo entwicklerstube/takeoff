@@ -1,5 +1,7 @@
 import { findTemplates } from './';
 
-test('asd', () => {
-  expect(findTemplates('./')).toBe(2);
+describe('find-templates', () => {
+  it('returns an array', () => {
+    expect(Array.isArray(findTemplates('./'))).toBe(true);
+  });
 });
