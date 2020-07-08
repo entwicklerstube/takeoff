@@ -1,21 +1,20 @@
 import { findTemplates } from './';
 import mock from 'mock-fs';
-// import { expect } from 'chai';
 
-describe('hey', () => {
-  it('does', async () => {
+describe('find-stations', () => {
+  it('dete fescaasd dasdsst12ss', async () => {
     mock({
       'some-dir': {},
       'some-file': '',
       '.takeoff': {
-        'my-station.js': 'hey',
+        'my-station.js': 'hsd2sasddey',
       },
     });
 
     const a = await findTemplates(__dirname);
 
-    console.log(a);
-    global.expect(a).to.have.lengthOf(3);
+    // console.log(a, __dirname);
+    expect(a).to.have.lengthOf(3);
   });
 });
 

@@ -13,6 +13,7 @@
     "@types/chai": "^4.2.11",
     "@types/mocha": "^7.0.2",
     "@types/mock-fs": "^4.10.0",
+    "@types/node": "^13.13.4",
     "chai": "^4.2.0",
     "mocha": "^8.0.1",
     "mock-fs": "^4.12.0",
@@ -22,6 +23,6 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "ts-mocha -p tsconfig.json lib/**/test.ts -r mocha.js"
+    "test": "ts-mocha -p tsconfig.json lib/**/*.ts -r mocha.js --watch --watch-files ./lib/**/*.ts"
   }
 }
