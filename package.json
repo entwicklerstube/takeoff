@@ -13,6 +13,7 @@
     "test:coverage": "nyc npm run test"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.11",
     "@types/mocha": "^7.0.2",
     "@types/node": "^14.0.20",
     "@typescript-eslint/eslint-plugin": "^3.6.0",
@@ -38,8 +39,7 @@
     "project": "tsconfig.json",
     "require": [
       "ts-node/register",
-      "tsconfig-paths/register",
-      "./mocha.ts"
+      "tsconfig-paths/register"
     ]
   },
   "nyc": {

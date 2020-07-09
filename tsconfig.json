@@ -7,5 +7,5 @@
     "esModuleInterop": true,
     "baseUrl": "."
   },
-  "include": ["global.d.ts", "./mocha.ts", "src/**/*.ts", "./lib.ts"]
+  "include": ["src/**/*.ts", "./lib.ts"]
 }
