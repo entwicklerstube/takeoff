@@ -1,4 +1,4 @@
-import chai from 'chai';
+import chai from "chai";
 
 declare global {
   namespace NodeJS {
