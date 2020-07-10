@@ -38,7 +38,7 @@
     "extension": "ts",
     "project": "tsconfig.json",
     "require": [
-      "./ts-node",
+      "ts-node/register/files",
       "tsconfig-paths/register",
       "./mocha.ts"
     ]
