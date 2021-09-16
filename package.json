@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "fs-extra": "^8.0.0",
-    "inquirer": "^3.0.6",
+    "inquirer": "^7.0.5",
     "p-map": "^1.1.1"
   },
   "devDependencies": {
